@@ -1,0 +1,76 @@
+.box-recha{
+    display: flex;
+    flex-direction: column;
+    width: 570px;
+    height: 380px;
+    align-items: center;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow:  12px 12px 27px #c4c4c4,
+                 -12px -12px 27px #ffffff;
+
+}
+.recha{
+    display: flex;
+    justify-content: center;
+}
+.teteRecharge{
+    display: flex;
+justify-content: space-between;
+    width: 100%;
+}
+.arrowleft{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.titile-recha{
+  margin-right:140px ;
+  color: red;
+}
+.formRech{
+    margin-top: 50px;
+    width: 100%;
+    height: 300px;
+
+    
+}
+.formRech input{
+    border-color: rgb(197, 193, 193);
+    border-radius: 5px;
+
+}
+.payement label{
+    margin: 15px;
+    font-weight: bold;
+}
+.payement{
+    margin-top: 60px;
+}
+.nomComp{
+    font-weight: bold;
+    margin-left:  40px;
+}
+.nomComp label{
+margin-right: 15px;
+}
+.nomComp input{
+    width: 350px;
+}
+.but-recha{
+margin-top: 70px;
+margin-left: 470px;
+border-radius: 5px;
+color: white;
+   background-color: rgb(1, 10, 64);
+   font-weight: bold;
+}
+.txt-confi{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+.txt-confiRecha{
+    width: 320px;
+    text-align: center;
+}
