@@ -1,0 +1,33 @@
+/* .presenProprio label,.adressProprio label,.quartir label{
+    margin: 40px;
+} */
+/* .presenProprio{
+        margin-top: 70px;
+
+}
+.quartirs{
+    margin-right: 330px;
+        margin-top: 70px;
+
+}
+.adressProprio{
+    margin-left: -20px;
+        margin-top: 70px;
+
+} */
+.presenProprio,.adressProprio,.quartirs{
+    display: flex;
+    width: 650px;
+    margin-top: 75px;
+    
+}
+.presenProprio,.adressProprio{
+justify-content: space-between;
+
+}
+.quartirs label{
+    margin-right: 30px;
+}
+.nmPro{
+    margin-left: 130px;
+}
