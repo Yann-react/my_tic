@@ -1,4 +1,6 @@
-import '../../styles/styleTitleBar.css';
+import React from 'react'
+
+import '../styles/styleTitleBar.css';
 export default function TitleBar({titre, nombre, onFiltreClick}){
     return (
         <div id='bar'>

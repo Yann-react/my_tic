@@ -1,0 +1,39 @@
+.box-lo{
+    display: flex;
+    justify-content: center;
+}
+.box-login{
+    width: 30%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow:  12px 12px 27px #c4c4c4,
+                 -12px -12px 27px #ffffff;
+                 margin-top: 90px;
+}
+.formLogin{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-top: 10px;
+    height: 50%;
+    font-weight: bold;
+    
+   
+}
+.but-login{
+    width: 75px;
+    margin-top: auto;
+    margin-left: auto;
+    border-radius: 5px;
+color: white;
+   background-color: rgb(1, 10, 64);
+   font-weight: bold;
+}
+.formLogin label{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

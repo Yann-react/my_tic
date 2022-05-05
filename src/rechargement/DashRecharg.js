@@ -1,7 +1,7 @@
-
+import React from 'react';
 import '../styles/styleDashRecharg.css';
-import Entete from "../components/entete/entete.js";
-import TitleBar from '../components/entete/TitleBar';
+import Entete from "../components/Entete";
+import TitleBar from '../components/TitleBar';
 import RechargItem from '../components/RechargItem';
 
 export default function DashRecharg(){
