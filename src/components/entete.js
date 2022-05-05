@@ -1,4 +1,5 @@
-import '../../styles/style_entete.css';
+import React from 'react';
+import '../styles/style_entete.css';
 export default function Entete({nomComplet, lienProfil}){
     return (
         <header id="entete">

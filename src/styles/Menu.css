@@ -1,0 +1,31 @@
+.box-menu{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    }
+
+.box-condu, .box-propr,.box-rechar{
+    width: 350px;
+    height: 300px;
+    align-self: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+align-items: center;
+    
+}
+.box-condu{
+background-color: rgba(1, 40, 64, 1) ;
+}
+.box-propr{
+background-color: rgba(166, 23, 49, 1) ;
+
+
+}
+.box-rechar{
+   background-color: black ; 
+}
+#titl-box-mnu{
+    color: white;
+}
