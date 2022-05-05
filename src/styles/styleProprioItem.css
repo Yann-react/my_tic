@@ -1,0 +1,56 @@
+#recharg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+    position: relative;
+}
+
+#recharg div{
+    width: 20%;
+    font-weight: 500;
+    color: black;
+}
+
+#recharg :nth-child(0n+2){
+    width: 35%;
+    color: #4d89e4;
+}
+
+#recharg :nth-child(0n+1){
+    width: 30%;
+}
+
+#recharg :nth-child(0n+4){
+    width: 15%;
+    color: #0FA958;
+}
+
+.modSuppr{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    display: none;
+}
+
+.modSuppr svg{
+    height: 40px;
+    width: 40px;
+    fill: #012840;
+}
+
+.suppr svg{
+    fill: #8a1a12;
+}
+
+#recharg:focus .modSuppr{
+    display: block;
+}
