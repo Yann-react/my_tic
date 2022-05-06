@@ -3,7 +3,7 @@
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("DELETE FROM rechargement WHERE id = ?");
+        $stmt = $bdd->prepare("DELETE FROM proprietaire WHERE id = ?");
         $stmt->execute(array($_GET["id"]));
 
         $result = [
