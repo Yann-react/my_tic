@@ -7,7 +7,7 @@ import RechargItem from '../components/RechargItem';
 export default function DashRecharg(){
     return (
         <div>
-            <Entete nomComplet="AMANI KONE" lienProfil="#"/>
+            <Entete nomComplet="AMANI KONE" lienProfil="#" name="rechargement"/>
             <TitleBar titre='RECHARGEMENTS' nombre={25} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>

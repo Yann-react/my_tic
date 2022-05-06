@@ -1,9 +1,13 @@
 import React from 'react'
 import arrowLeft from '../assets/arrow-left.svg'
 import '../styles/Proprio.css'
+import Entete from "../components/Entete";
+
 export default function AddProprio() {
   return (
     <>
+                    <Entete nomComplet="AMANI KONE" lienProfil="#" />
+
     <div className='recha'>
       <div className='box-add'>
       <div className="teteRecharge">

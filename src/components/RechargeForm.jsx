@@ -1,9 +1,13 @@
 import React from 'react'
 import '../styles/RechargeForm.css'
 import arrowLeft from '../assets/arrow-left.svg'
+import Entete from "../components/Entete";
+
 export default function RechargeForm() {
   return (
     <>
+                    <Entete nomComplet="AMANI KONE" lienProfil="#" />
+
     <div className='recha'>
     <div className='box-recha'>
     <div className="teteRecharge">

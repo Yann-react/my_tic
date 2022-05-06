@@ -8,6 +8,8 @@
     background: #ffffff;
     box-shadow:  12px 12px 27px #c4c4c4,
                  -12px -12px 27px #ffffff;
+                 margin-top: 80px;
+
 }
 .formAddCon{
     display: flex;

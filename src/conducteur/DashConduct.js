@@ -1,11 +1,12 @@
+import React from 'react';
 import '../styles/styleDashConduct.css';
-import Entete from "../components/entete/entete.js";
-import TitleBar from '../components/entete/TitleBar';
+import Entete from "../components/Entete.js";
+import TitleBar from '../components/TitleBar';
 
 export default function DashConduct(){
     return (
         <div>
-            <Entete nomComplet="AMANI KONE" lienProfil="#"/>
+            <Entete nomComplet="AMANI KONE" lienProfil="#" name="conducteur"/>
             <TitleBar titre='CONDUCTEURS' nombre={25} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>

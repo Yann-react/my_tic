@@ -1,20 +1,4 @@
-/* .presenProprio label,.adressProprio label,.quartir label{
-    margin: 40px;
-} */
-/* .presenProprio{
-        margin-top: 70px;
 
-}
-.quartirs{
-    margin-right: 330px;
-        margin-top: 70px;
-
-}
-.adressProprio{
-    margin-left: -20px;
-        margin-top: 70px;
-
-} */
 .presenProprio,.adressProprio,.quartirs{
     display: flex;
     width: 650px;

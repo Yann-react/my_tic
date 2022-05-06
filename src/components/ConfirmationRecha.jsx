@@ -1,5 +1,7 @@
 import React from 'react'
 import check from '../assets/check.svg'
+import Entete from "../components/Entete";
+
 export default function ConfirmationRecha() {
   return (
     <>

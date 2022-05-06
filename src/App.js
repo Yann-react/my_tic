@@ -9,21 +9,30 @@ import RechargeForm from './components/RechargeForm'
 import UpdatConductor from './components/UpdatConductor'
 import ViewProfil from './components/ViewProfil'
 import DashRecharg from './rechargement/DashRecharg'
-
+import { Routes, Route, Link } from "react-router-dom";
+import DashProprio from './proprietaire/DashProprio'
+import DashConduct from './conducteur/DashConduct'
 export default function App() {
   return (
     <div>
-       <Entete />
-      {/* <ViewProfil /> */}
+            {/* <Login /> */}
+
+      <Routes>
+      <Route path='/' element={<Login />} />
+      <Route path='Menu' element={<Menu />} />
+      <Route path='profils'  element={<ViewProfil /> } />
       {/* <RechargeForm /> */}
       {/* <ConfirmationRecha /> */}
-      {/* <AddConductor /> */}
+    <Route path='AddCondu' element={<AddConductor />} />
+    <Route path='AddProprio' element={<AddProprio />} />
+    <Route path='RechargeForm' element={<RechargeForm />} />
       {/* <UpdatConductor /> */}
       {/* <AddProprio /> */}
       {/* <UpdatConductor /> */}
-      {/* <Menu /> */}
-      {/* <DashRecharg /> */}
-      <Login />
+     <Route path='condu' element={ <DashConduct /> } />
+    <Route path='proprio' element={<DashProprio /> } />
+     <Route path='Rechar' element={<DashRecharg />} />
+      </Routes>
      
     </div>
   )

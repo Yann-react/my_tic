@@ -1,12 +1,13 @@
+import React from 'react';
 import '../styles/styleDashProprio.css';
-import Entete from "../components/entete/entete.js";
-import TitleBar from '../components/entete/TitleBar';
+import Entete from "../components/Entete.js";
+import TitleBar from '../components/TitleBar';
 import ProprioItem from '../components/ProprioItem';
 
 export default function DashProprio(){
     return (
         <div>
-            <Entete nomComplet="AMANI KONE" lienProfil="#"/>
+            <Entete nomComplet="AMANI KONE" lienProfil="#" name="proprietaire"/>
             <TitleBar titre='PROPRIETAIRES' nombre={25} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>
