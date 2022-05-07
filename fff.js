@@ -41,6 +41,7 @@ function getConductFromFiltres(dateDeb, dateFin, commune, quartier){
     let url = encodeURI(req);
 }
 
+
 //Supprimer, Tu passes l'ID du wé et c tout
 
 function deleteProprio(matricule){
@@ -92,4 +93,9 @@ function deleteRecharg(id){
         .then(function () {
             // always executed
         })  
+
+//Modifier
+function setConduct(nom, prenom, commune, quartier, telephone){
+    let req = 'requetes/setConduct.php?nom='+nom+'&commune='+commune+'&quartier='+quartier+'&telephone='+telephone+'&prenom='+prenom;
+
 }
