@@ -40,3 +40,56 @@ function getConductFromFiltres(dateDeb, dateFin, commune, quartier){
 
     let url = encodeURI(req);
 }
+
+//Supprimer, Tu passes l'ID du wé et c tout
+
+function deleteProprio(matricule){
+    const url =  encodeURI("http://tryconnectadmin/deleteProprio.php?id="+matricule);
+    
+     axios.get(url)
+        .then(function (response) {
+            // handle success
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        })  
+}
+
+function deleteConduct(matricule){
+    const url =  encodeURI("http://tryconnectadmin/deleteConduct.php?id="+matricule);
+    
+     axios.get(url)
+        .then(function (response) {
+            // handle success
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        })  
+}
+
+function deleteRecharg(id){
+    const url =  encodeURI("http://tryconnectadmin/deleteProprio.php?id="+id);
+    
+     axios.get(url)
+        .then(function (response) {
+            // handle success
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        })  
+}
