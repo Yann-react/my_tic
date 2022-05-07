@@ -40,3 +40,8 @@ function getConductFromFiltres(dateDeb, dateFin, commune, quartier){
 
     let url = encodeURI(req);
 }
+
+//Modifier
+function setConduct(nom, prenom, commune, quartier, telephone){
+    let req = 'requetes/setConduct.php?nom='+nom+'&commune='+commune+'&quartier='+quartier+'&telephone='+telephone+'&prenom='+prenom;
+}
