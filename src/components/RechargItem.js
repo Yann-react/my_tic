@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/styleRechargItem.css';
 
-export default function RechargItem({idRecharg, dateRecharg, conducteur, moyen, montant}){
+export default function RechargItem({ dateRecharg, conducteur, moyen, montant}){
     return (
         <div id="recharg">
             <div> {dateRecharg} </div>

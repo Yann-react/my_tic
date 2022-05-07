@@ -1,6 +1,6 @@
 import '../styles/styleProprioItem.css';
 
-export default function ProprioItem({idProprio, dateProprio, nomComplet, telProprio, nbVehicules, adresseRecherch}){
+export default function ProprioItem({ dateProprio, nomComplet, telProprio, nbVehicules, adresseRecherch}){
     return (
         <div id="recharg">
             <div> {dateProprio} </div>
