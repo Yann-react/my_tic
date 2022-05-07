@@ -26,3 +26,18 @@ export default function Login() {
     </>
   )
 }
+
+function tryConnectAdmin(login, mdp){//Prend en parametre le login et le mdp
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+
+        if (this.readyState == 4 && this.status == 200) {
+            let rep = JSON.parse(xhr.responseText);
+            //rep est le resultat de la requete
+            //Si la connexion a echoué, on a rep.succes == false
+            //Si la connexion a reussi, on a rep.succes == true et rep.resultat = {nomComplet: ..., matricule: ..., mdp: ....}
+        }
+    };
+    xhr.open("GET", encodeURI("../requetes/tryConnectAdmin.php?matricule="+login+"&mdp="+mdp), true);
+    xhr.send();
+}
