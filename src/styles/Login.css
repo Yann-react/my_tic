@@ -37,3 +37,10 @@ color: white;
     margin-bottom: 10px;
     margin-top: 10px;
 }
+.active{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+opacity: 1;}
+.disactive{
+opacity: 0;}

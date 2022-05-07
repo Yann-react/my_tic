@@ -13,7 +13,7 @@ export default function Menu() {
 
   return (
     <>
-                    <Entete nomComplet="AMANI KONE" lienProfil="#" />
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
 
         <div className='box-menu'>
             <div className='box-condu'><img src={driv}  height="170px" onClick={()=> navigate('/condu') } /><h2 id='titl-box-mnu'>CONDUCTEUR</h2></div>
