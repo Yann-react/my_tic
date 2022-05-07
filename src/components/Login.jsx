@@ -7,12 +7,9 @@ import md5 from 'md5';
 export default function Login() {
     const navigate = useNavigate()
 
-    
-
    function handleSbmit(){
     const matricul = document.getElementById('matricul').value
     const password = md5(document.getElementById('password').value)
-  console.log(password);
        const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
     
      axios.get(url)

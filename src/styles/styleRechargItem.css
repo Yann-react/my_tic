@@ -38,7 +38,7 @@
     height: 40px;
     display: flex;
     justify-content: end;
-    display: none;
+    display: block;
 }
 
 .modSuppr svg{
@@ -49,8 +49,4 @@
 
 .suppr svg{
     fill: #8a1a12;
-}
-
-#recharg:focus .modSuppr{
-    display: block;
 }

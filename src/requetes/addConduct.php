@@ -1,6 +1,7 @@
 <?php
     include 'bdd.php';
-
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
     try {
         $bdd = getBDD();
         $stmt = $bdd->prepare("INSERT INTO conducteur (date, nom, prenom, commune, quartier, telephone) VALUES (:date, :nom, :prenom, :nombreCondu, :communeCondu, :quartierCondu, :telephone)");
@@ -24,6 +25,7 @@
         ];
       
       } catch(PDOException $e) {
+        echo($e->getMessage());
         $result = [
             "succes"=>false,
         ];

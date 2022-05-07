@@ -1,7 +1,7 @@
 .box-recha{
     display: flex;
     flex-direction: column;
-    width: 570px;
+    width: 650px;
     height: 380px;
     align-items: center;
     border-radius: 8px;
@@ -46,24 +46,28 @@ justify-content: space-between;
 }
 .payement{
     margin-top: 60px;
+    margin-left: 50px;
 }
 .nomComp{
     font-weight: bold;
-    margin-left:  40px;
+    margin-left:  10px;
+    width: 100%;
 }
 .nomComp label{
 margin-right: 15px;
+margin-left: 15px;
 }
 .nomComp input{
-    width: 350px;
+    /* width: 350px; */
 }
 .but-recha{
 margin-top: 70px;
-margin-left: 470px;
+margin-left: 500px;
 border-radius: 5px;
 color: white;
    background-color: rgb(1, 10, 64);
    font-weight: bold;
+   
 }
 .txt-confi{
     display: flex;

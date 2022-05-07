@@ -1,6 +1,8 @@
 <?php
     include 'bdd.php';
 
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
     try {
         $bdd = getBDD();
         $stmt = $bdd->prepare("INSERT INTO proprietaire (date, nom, prenom, nombreCondu, communeCondu, quartierCondu, telephone) VALUES (:date, :nom, :prenom, :nombreCondu, :communeCondu, :quartierCondu, :telephone)");
