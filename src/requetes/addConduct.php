@@ -4,7 +4,7 @@
     header('Access-Control-Allow-Headers: Content-Type');
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("INSERT INTO conducteur (date, nom, prenom, commune, quartier, telephone) VALUES (:date, :nom, :prenom, :nombreCondu, :communeCondu, :quartierCondu, :telephone)");
+        $stmt = $bdd->prepare("UPDATE conducteur SET (nom=:nom, prenom=:prenom, nombreCondu=:nombreCondu, communeCondu=:communeCondu, quartierCondu=:quartierCondu, telephone=:telephone)");
         $stmt->bindParam(':date', $date);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);

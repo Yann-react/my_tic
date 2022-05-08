@@ -3,7 +3,7 @@
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("UPDATE proprietaire SET (nom, prenom, nombreCondu, communeCondu, quartierCondu, telephone) VALUES (:nom, :prenom, :nombreCondu, :communeCondu, :quartierCondu, :telephone)");
+        $stmt = $bdd->prepare("UPDATE proprietaire SET (nom=:nom, prenom=:prenom, nombreCondu=:nombreCondu, commune=:communeCondu, quartier=:quartierCondu, telephone=:telephone) WHERE id='".$_GET["id"]."'");
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':nombreCondu', $nombreCondu);
