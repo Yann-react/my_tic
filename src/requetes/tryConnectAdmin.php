@@ -1,7 +1,6 @@
 <?php
     include 'bdd.php';
-    header("Access-Control-Allow-Origin: *");
-    header('Access-Control-Allow-Headers: Content-Type');
+
     try {
         $bdd = getBDD();
         $rech = $bdd->prepare("SELECT * FROM admin WHERE matricule=? AND motpass=?");

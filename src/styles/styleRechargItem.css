@@ -32,21 +32,21 @@
 }
 
 .modSuppr{
-    position: absolute;
+    /* position: absolute;
     right: 0px;
     top: 0px;
     height: 40px;
     display: flex;
-    justify-content: end;
-    display: block;
+    justify-content: end; */
+    /* border: solid 1px; */
+    /* margin-right: 500px; */
+    position: absolute;
+    right: 430px;
+    width: 50px;
+    border: solid 1px;
 }
 
-.modSuppr svg{
-    height: 40px;
-    width: 40px;
-    fill: #012840;
-}
-
-.suppr svg{
-    fill: #8a1a12;
+.upadt{
+    position: absolute;
+    left: 40px;
 }

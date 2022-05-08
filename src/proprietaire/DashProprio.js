@@ -47,6 +47,11 @@ export default function DashProprio(){
         getProprioFromFiltres(datedeb,datefin,conducteur1,conducteur2,commun,quartier)
     }
     
+
+
+
+   
+
     return (
         <div>
             <Entete nomComplet="AMANI KONE" lienProfil="#" name="proprietaire"/>
@@ -84,7 +89,7 @@ export default function DashProprio(){
                 <div>Adresse Recherchée</div>
             </div>
             <div id='listeBox'>
-            {proprio.map((item,i)=>(<ProprioItem key={i} dateProprio={item.date} nomComplet={item.nom+" "+item.prenom } telProprio={item.telephone} nbVehicules={item.nombreConduct} adresseRecherch={item.communeRech+"-"+item.quartierRech} />))}
+            {proprio.map((item,i)=>(<ProprioItem key={i} idproprio={item.id} dateProprio={item.date} nomComplet={item.nom+" "+item.prenom } telProprio={item.telephone} nbVehicules={item.nombreConduct} adresseRecherch={item.communeRech+"-"+item.quartierRech} nom ={item.nom} prenom={item.prenom} quartier={item.quartierRech} commune={item.communeRech} />))}
 
             </div>
             </div>

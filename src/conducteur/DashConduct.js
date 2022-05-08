@@ -72,7 +72,7 @@ export default function DashConduct(){
                 <div>Adresse</div>
             </div>
             <div id='listeBox'>
-            {condu.map((item,i)=>(<ConductItem key={i} nomComplet={item.nom} telConduct={item.telephone} adresseConduct={item.quartier+"-"+item.commune} dateConduct={item.date}  />))}
+            {condu.map((item,i)=>(<ConductItem key={i} idConduct={item.id} nomComplet={item.nom+" "+item.prenom} telConduct={item.telephone} adresseConduct={item.quartier+"-"+item.commune} dateConduct={item.date} nom={item.nom} prenom={item.prenom} commune={item.commune} quartier={item.quartier} />))}
 
             </div>
             

@@ -32,25 +32,18 @@
 }
 
 .modSuppr{
-    position: absolute;
-    right: 0px;
-    top: 0px;
+    /* position: absolute;
+    right: 840px;
+    top: 12px;
     height: 40px;
     display: flex;
-    justify-content: end;
-    display: none;
+    justify-content: end; */
 }
+/* .modif{
+    position: absolute;
+    right: 20px;
 
-.modSuppr svg{
-    height: 40px;
-    width: 40px;
-    fill: #012840;
-}
-
-.suppr svg{
-    fill: #8a1a12;
-}
-
-#recharg:focus .modSuppr{
-    display: block;
+} */
+img{
+    /* border: solid 1px; */
 }

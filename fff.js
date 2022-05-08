@@ -62,7 +62,7 @@ function deleteProprio(matricule){
 }
 
 function deleteConduct(matricule){
-    const url =  encodeURI("http://tryconnectadmin/deleteConduct.php?id="+matricule);
+    const url =  encodeURI("http://tryconnectadmin/deleteRecharg.php?id="+matricule);
     
      axios.get(url)
         .then(function (response) {
@@ -93,9 +93,21 @@ function deleteRecharg(id){
         .then(function () {
             // always executed
         })  
-
+    }
 //Modifier
 function setConduct(nom, prenom, commune, quartier, telephone){
-    let req = 'requetes/setConduct.php?nom='+nom+'&commune='+commune+'&quartier='+quartier+'&telephone='+telephone+'&prenom='+prenom;
+    let req = 'http://tryconnectadmin/setConduct.php?nom='+nom+'&commune='+commune+'&quartier='+quartier+'&telephone='+telephone+'&prenom='+prenom;
+    axios.get(url)
+    .then(function (response) {
+        // handle success
+        console.log(response.data);
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+    .then(function () {
+        // always executed
+    })  
 
 }

@@ -56,3 +56,24 @@
     margin-right:230px ;
     color: red;
 }
+.box-add-p{
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    height: 520px;
+    align-items: center;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow:  12px 12px 27px #c4c4c4,
+                 -12px -12px 27px #ffffff;
+                 margin-top: 80px; 
+}
+.but-condu-p{
+    margin-top: 80px;
+    margin-left: 680px;
+    border-radius: 5px;
+
+    color: white;
+   background-color: rgb(1, 10, 64);
+   font-weight: bold;
+}
