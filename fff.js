@@ -99,3 +99,38 @@ function setConduct(nom, prenom, commune, quartier, telephone){
     let req = 'requetes/setConduct.php?nom='+nom+'&commune='+commune+'&quartier='+quartier+'&telephone='+telephone+'&prenom='+prenom;
 
 }
+    
+    
+//Fonctions de verification et de deconnexion
+function verifierConnexion(){
+    if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+        const matricul = window.sessionStorage.getItem("matricule")
+        const password = window.sessionStorage.getItem("mdp")
+       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+    
+     axios.get(url)
+         .then(function (response) {
+             console.log(response.data);
+             if(response.data.succes){
+                 //Ok il est connecté, il peut rester
+             }else{
+                 //Il degage
+                navigate('/');
+             }
+         })
+         .catch(function (error) {
+             console.log(error);
+         })
+         .then(function () {
+         })  
+    }else{
+        //Deco
+        navigate('/');
+    }
+}
+
+function deconnecter(){
+    window.sessionStorage.removeItem('matricule');
+    window.sessionStorage.removeItem('mdp');
+    navigate('/');
+}
