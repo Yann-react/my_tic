@@ -3,7 +3,7 @@
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("INSERT INTO conducteur (nom, prenom, commune, quartier, telephone) VALUES (nom, :prenom, :nombreCondu, :communeCondu, :quartierCondu, :telephone)");
+        $stmt = $bdd->prepare("UPDATE conducteur SET nom=:nom, prenom=:prenom, commune=:commune, quartier=:quartier, telephone=:telephone");
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':commune', $commune);
