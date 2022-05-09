@@ -3,7 +3,7 @@
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("UPDATE rechargement SET (nomComplet, montant, idAdmin, moyenPay, telephone) VALUES (:nomComplet, :montant, :moyenPay, :telephone)");
+        $stmt = $bdd->prepare("UPDATE rechargement SET nomComplet=:nomComplet, montant=:montant, moyenPay=:moyenPay, telephone=:telephone");
         $stmt->bindParam(':nomComplet', $nomComplet);
         $stmt->bindParam(':montant', $montant);;
         $stmt->bindParam(':moyenPay', $moyenPay);
