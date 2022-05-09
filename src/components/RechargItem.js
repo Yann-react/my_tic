@@ -4,8 +4,14 @@ import '../styles/styleRechargItem.css';
 import Delete from '../assets/delete.svg'
 import update from '../assets/update.svg'
 import axios from 'axios';
-export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, montant}){
+import { useNavigate } from 'react-router-dom';
+
+
+export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, montant, telephone}){
    
+    const navigate = useNavigate()
+
+
     function deleteRecharg(id){
         const url =  encodeURI("http://tryconnectadmin/deleteProprio.php?id="+id);
         
@@ -26,18 +32,22 @@ export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, 
         deleteRecharg(idRecharg)
         console.log("ok")
     }
+    function handleupdate2(){
+        navigate(`/UpdatRecharge/${conducteur}/${montant}/${moyen}/${telephone}/${idRecharg}`);
+        }
 
     return (
         <div id="recharg">
             <div> {dateRecharg} </div>
             <div> {conducteur} </div>
+            <div> {telephone} </div>
             <div> {moyen} </div>
             <div> {montant} </div>
             <div className='modSuppr'>
             <img src={Delete} height="17px" onClick={handledelete}   />
                 
                 
-                <img src={update} height="17px" className='upadt' />
+                <img src={update} height="17px" className='upadt' onClick={handleupdate2}/>
             </div>
         </div>
     );

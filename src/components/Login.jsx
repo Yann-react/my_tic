@@ -1,7 +1,7 @@
 import React , {Component }from 'react'
 import '../styles/Login.css'
 import { useNavigate } from "react-router-dom";
-import Entete from "../components/Entete";
+import Entete from "./Entete";
 import axios from 'axios';
 import md5 from 'md5';
 export default function Login() {

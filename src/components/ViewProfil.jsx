@@ -2,7 +2,7 @@ import React from 'react'
 import profils from '../assets/profils.svg'
 import edit from '../assets/edit.svg'
 import '../styles/ViewProfil.css'
-import Entete from "../components/Entete";
+import Entete from "./Entete";
 
 export default function ViewProfil() {
   return (

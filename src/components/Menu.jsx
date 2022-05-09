@@ -3,7 +3,7 @@ import '../styles/Menu.css'
 import owner from '../assets/owner.svg'
 import rechar from '../assets/rechar.svg'
 import driv from '../assets/driv.svg'
-import Entete from "../components/Entete";
+import Entete from "./Entete";
 
 import { useNavigate } from "react-router-dom";
 

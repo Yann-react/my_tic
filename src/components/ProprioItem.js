@@ -29,7 +29,7 @@ export default function ProprioItem({ idproprio, dateProprio, nomComplet, telPro
         console.log("ok")
     }
     function handleupdate1(){
-        navigate(`/UpdatProprio/${nom}/${prenom}/${commune}/${quartier}/${telProprio}/${nbVehicules}`);
+        navigate(`/UpdatProprio/${nom}/${prenom}/${commune}/${quartier}/${telProprio}/${nbVehicules}/${idproprio}`);
         }
     return (
         <div id="recharg">

@@ -99,12 +99,13 @@ export default function DashRecharg(){
             <div id='listeSommaire'>
                 <div>Date</div>
                 <div>Conducteur</div>
+                <div>Télephone</div>
                 <div>Moyen de Paiement</div>
                 <div>Montant</div>
             </div>
             <div id='listeBox'>
                 
-                {client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant}/>))}
+                {client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}
             </div>
             </div>
         </div>

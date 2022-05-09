@@ -1,7 +1,7 @@
 import React from 'react'
 import arrowLeft from '../assets/arrow-left.svg'
 import '../styles/AddConductor.css'
-import Entete from "../components/Entete";
+import Entete from "./Entete";
 import axios from 'axios';
 
 export default function AddConductor() {

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import arrowLeft from '../assets/arrow-left.svg'
-import Entete from "../components/Entete";
+import Entete from "./Entete";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 export default function UpdatProprio() {
@@ -36,8 +36,8 @@ const [nom, setNom] = useState('')
    }
   
 
-  function setConduct(nom, prenom, commune, quartier, telephone, nombreCondu){
-    let url = 'http://tryconnectadmin/setProprio.php?nom='+nom+'&communeCondu='+commune+'&quartierCondu='+quartier+'&telephone='+telephone+'&prenom='+prenom+'&nombreCondu='+nombreCondu;
+  function setProprio(nom, prenom, commune, quartier, telephone, nombreCondu, id){
+    let url = 'http://tryconnectadmin/setProprio.php?nom='+nom+'&communeCondu='+commune+'&quartierCondu='+quartier+'&telephone='+telephone+'&prenom='+prenom+'&nombreCondu='+nombreCondu+'&id='+id;
     axios.get(url)
     .then(function (response) {
         // handle success
@@ -56,7 +56,7 @@ const [nom, setNom] = useState('')
 
 function handleupdate (){
   
-      setConduct(nom,prenom,commune,quartier,telephone,nombreCondu)
+      setProprio(nom,prenom,commune,quartier,telephone,nombreCondu,params.id)
     console.log("ok")
 }
 console.log(params.prenom);

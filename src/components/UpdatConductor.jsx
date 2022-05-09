@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import arrowLeft from '../assets/arrow-left.svg'
-import Entete from "../components/Entete";
+import Entete from "./Entete";
 import axios from 'axios';
 import DashConduct from '../conducteur/DashConduct';
 import ConductItem from './ConductItem';

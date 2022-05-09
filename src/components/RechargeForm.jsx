@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/RechargeForm.css'
 import arrowLeft from '../assets/arrow-left.svg'
-import Entete from "../components/Entete";
+import Entete from "./Entete";
 import axios
  from 'axios';
 export default function RechargeForm() {
