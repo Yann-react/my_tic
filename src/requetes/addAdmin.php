@@ -1,5 +1,7 @@
 <?php
     include 'bdd.php';
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
 
     try {
         $bdd = getBDD();
@@ -9,7 +11,7 @@
         $stmt->bindParam(':motpass', $motpass);
       
         $nomComplet = $_GET["nomComplet"];
-        $motpass = $_GET["motpass"];
+        $motpass = "MOTDEPASSE";
         $matricule = $_GET["matricule"];
         $stmt->execute();
 
