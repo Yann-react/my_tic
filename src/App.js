@@ -45,6 +45,12 @@ export default function App() {
       <Route path='/UpdatConductor/:nom/:prenom/:commune/:quartier/:telConduct/:id/condu' element={<DashConduct /> } />
       <Route path='/UpdatProprio/:nom/:prenom/:commune/:quartier/:telProprio/:nbVehicules/:id/proprio' element={<DashProprio /> } />
       <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id/Rechar' element={<DashRecharg /> } />
+      <Route path='LoginSuper' element={<LoginSuper />} />
+     <Route path='DashSuper' element={<DashSuper />} />
+     <Route path='ViewProfileSuper' element={<ViewProfilSuper />} />
+     <Route path='AddAdmin' element={<AddAdmin />} />
+     <Route path='SetPasswordSuper' element={<SetPasswordSuper />} />
+     <Route path='ConfirmDeleteAdmin' element={<ConfirmDeleteAdmin />} />
 
       </Routes>
     
