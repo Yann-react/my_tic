@@ -1,9 +1,11 @@
 <?php
     include 'bdd.php';
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("UPDATE admin SET (motpass) VALUES (:motpass) WHERE matricule=:matricule");
+        $stmt = $bdd->prepare("UPDATE superadmin SET motpass=:motpass WHERE matricule=:matricule");
         $stmt->bindParam(':matricule', $matricule);
         $stmt->bindParam(':motpass', $motpass);
     
@@ -20,10 +22,5 @@
             "succes"=>false,
         ];
       }
-    
-    
-
-
-
     echo(json_encode($result, JSON_UNESCAPED_UNICODE));
 ?>
