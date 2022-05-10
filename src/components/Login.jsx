@@ -11,8 +11,6 @@ export default function Login() {
         navigate('/LoginSuper');
     }
 
-    function handleSbmit(){
-        const matricul = document.getElementById('matricul').value
    function handleSbmit(){
     const matricul = document.getElementById('matricul').value
     const password = md5(document.getElementById('password').value)
@@ -40,7 +38,6 @@ export default function Login() {
              // always executed
             })  
         }     
-}
 
 function verifierConnexion(){
     if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
