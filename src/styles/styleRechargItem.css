@@ -1,49 +1,53 @@
-
-#box-R{
+#recharg{
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     margin-bottom: 5px;
     margin-left: 10px;
     margin-right: 10px;
-    padding-top: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: solid 1px;
-    align-self: center;
-
+    position: relative;
 }
-#box-R div{
+
+#recharg div{
     width: 20%;
     font-weight: 500;
     color: black;
 }
-#box-R :nth-child(0n+2){
-    width: 20%;
+
+#recharg :nth-child(0n+2){
+    width: 35%;
     color: #4d89e4;
-  position: absolute;
-    left:  420px;
 }
-#box-R :nth-child(0n+3){
-    width: 10%;
-   
-    position: absolute;
-    right:  580px;
-}
-#box-R :nth-child(0n+1){
+
+#recharg :nth-child(0n+1){
     width: 30%;
 }
-#box-R   :nth-child(0n+4){
-    width: 10%;
+
+#recharg :nth-child(0n+4){
+    width: 15%;
     color: #0FA958;
-    position: absolute;
-    right:  322px;
-}
-#box-R   :nth-child(0n+5){
-    width: 9%;
-    position: absolute;
-    right:  90px;
 }
 
-.dlt{
-    position:absolute;
-left:400px;
+.modSuppr{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    display: block;
+    background-color: #012840;
+}
 
+.modSuppr svg{
+    height: 40px;
+    width: 40px;
+    fill: #012840;
+}
+
+.suppr svg{
+    fill: #8a1a12;
 }
