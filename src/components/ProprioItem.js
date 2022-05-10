@@ -26,27 +26,31 @@ export default function ProprioItem({ idproprio, dateProprio, nomComplet, telPro
     }
     function handledelete (){
         deleteProprio(idproprio)
+        alert('Proprietaire à bien été suprimé')
+
+
         console.log("ok")
     }
     function handleupdate1(){
         navigate(`/UpdatProprio/${nom}/${prenom}/${commune}/${quartier}/${telProprio}/${nbVehicules}/${idproprio}`);
         }
     return (
-        <div id="recharg">
+        <div>
+
+        <div id="box-r">
             <div> {dateProprio} </div>
             <div> {nomComplet} </div>
             <div> {telProprio} </div>
             <div> {nbVehicules} </div>
             <div> {adresseRecherch} </div>
+            </div>
+            <div className='mod'>
             <div className='modSuppr'>
-    
-                    <img src={Delete} height="17px" onClick={handledelete}   />
-                
-                
+                    <img src={Delete} height="17px" onClick={handledelete}  className='dlt'   />
                     <img src={update} height="17px" className='upadt' onClick={handleupdate1} />
-                    
-                
+            </div>
             </div>
         </div>
+        
     );
 }

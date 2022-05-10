@@ -1,11 +1,42 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../styles/RechargeForm.css'
 import arrowLeft from '../assets/arrow-left.svg'
 import Entete from "./Entete";
-import axios
- from 'axios';
-export default function RechargeForm() {
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
+export default function RechargeForm() {
+  const navigate = useNavigate()
+
+  function verifierConnexion(){
+    if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+        const matricul = window.sessionStorage.getItem("matricule")
+        const password = window.sessionStorage.getItem("mdp")
+       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+    
+     axios.get(url)
+         .then(function (response) {
+             console.log(response.data);
+             if(response.data.succes){
+                 //Ok il est connecté, il peut rester
+             }else{
+                 //Il degage
+                navigate('/');
+             }
+         })
+         .catch(function (error) {
+             console.log(error);
+         })
+         .then(function () {
+         })  
+    }else{
+        //Deco
+        navigate('/');
+    }
+}
+useEffect(()=>{
+  verifierConnexion()
+},[])
   
   function handleSbmit3(){
     
@@ -19,7 +50,9 @@ export default function RechargeForm() {
        axios.get(url)
        .then(function (response) {
          // handle success
-         console.log(response);
+         if(response.data.succes){
+          alert('Rechargement à bien été ajouté')
+         }
        })
        .catch(function (error) {
          // handle error
@@ -32,12 +65,12 @@ export default function RechargeForm() {
 
   return (
     <>
-                    <Entete nomComplet="AMANI KONE" lienProfil="#" />
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#"  />
 
     <div className='recha'>
     <div className='box-recha'>
     <div className="teteRecharge">
-        <img src={arrowLeft} height="30" className='arrowleft' />
+    <img src={arrowLeft} height="30" className='arrowleft' onClick={()=>navigate('Rechar')} />
         <h1 className='titile-recha'>RECHARGEMENT</h1>
     </div>
     <div action="" className='formRech'>
@@ -51,11 +84,11 @@ export default function RechargeForm() {
         <label htmlFor="montant">Montant</label>
         <input type="text" name='montant'id='montant'/>
         <label htmlFor="moyenPayement">Moyen Payement</label>
-        <select name="moyenPayement" id="moyPay">
-            <option value="wave">Wave</option>
-            <option value="OrangeMoney">Orange Money</option>
-            <option value="MoovMoney">Moov Money</option>
-            <option value="MtnMoney">Mtn Money</option>
+        <select name="moyenPayement" id='moyPay'>
+            <option value="">PEUT IMPORTE</option>
+            <option value="1">WAVE</option>
+            <option value="2">ORANGE MONEY</option>
+            <option value="3">ESPECE</option>
         </select>
         </div>
         <button className='but-recha' onClick={handleSbmit3}>VALIDER</button>

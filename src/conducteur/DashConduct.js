@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState , useEffect} from 'react';
 import '../styles/styleDashConduct.css';
 import Entete from "../components/Entete.js";
 import TitleBar from '../components/TitleBar';
@@ -32,7 +32,7 @@ export default function DashConduct(){
         .then(function () {
           // always executed
         });    }
-    
+   
     function validFiltres3(){
         const commun = document.getElementById('commun').value
         const quartier = document.getElementById('quartier').value
@@ -40,6 +40,9 @@ export default function DashConduct(){
         const datefin = document.getElementById('datefin').value  
         getConductFromFiltres(datedeb,datefin,commun,quartier) 
        }
+       useEffect(()=>{
+        validFiltres3()
+            },[])
     
     return (
         <div>
@@ -64,7 +67,7 @@ export default function DashConduct(){
                     <div id='validFiltresRow'>
                         <div id='validFiltres' onClick={validFiltres3}>VALIDER</div>
                     </div>
-                </div>
+                    </div>
             <div id='listeSommaire'>
                 <div>Date</div>
                 <div>Conducteur</div>

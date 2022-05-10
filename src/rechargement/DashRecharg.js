@@ -5,6 +5,7 @@ import TitleBar from '../components/TitleBar';
 import RechargItem from '../components/RechargItem';
 import axios from 'axios';
 export default function DashRecharg(){
+    
    
     const [client, setClient] = useState([])
 
@@ -52,7 +53,18 @@ export default function DashRecharg(){
 
         getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, idadmin, nom, pay);
     }
-    
+   function  getCurrentDate(separator=''){
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        
+        
+        
+        return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+        }
+        let result = getCurrentDate()[0]+getCurrentDate()[1]+getCurrentDate()[2]+getCurrentDate()[3]+"-"+getCurrentDate()[4]+getCurrentDate()[5]+"-"+getCurrentDate()[6]+getCurrentDate()[7];
+        console.log(result);
     return (
         <div>
             <Entete nomComplet="AMANI KONE" lienProfil="#" name="rechargement"/>
@@ -61,9 +73,9 @@ export default function DashRecharg(){
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>
                     <div className='filtreLabel'>Date</div>
                     <div className='filtreRow'>
-                        <input type='date' id='datedeb'/>
+                        <input type='date' id='datedeb' defaultValue={result} />
                         <span>-</span>
-                        <input type='date' id='datefin'/>
+                        <input type='date' id='datefin' />
                     </div>
                     <div className='filtreLabel'>Montant</div>
                     <div className='filtreRow'>
@@ -96,7 +108,7 @@ export default function DashRecharg(){
                         <div id='validFiltres' onClick={validFiltres}>VALIDER</div>
                     </div>
                 </div>
-            <div id='listeSommaire'>
+            <div id='listeSommaires'>
                 <div>Date</div>
                 <div>Conducteur</div>
                 <div>Télephone</div>

@@ -20,19 +20,32 @@ export default function App() {
             {/* <Login /> */}
 
       <Routes>
+      {/* Route simpl */}
       <Route path='/' element={<Login />} />
       <Route path='Menu' element={<Menu />} />
       <Route path='profils'  element={<ViewProfil /> } />
-    
-    <Route path='AddCondu' element={<AddConductor />} />
-    <Route path='AddProprio' element={<AddProprio />} />
-    <Route path='RechargeForm' element={<RechargeForm />} />
-     <Route path='/UpdatConductor/:nom/:prenom/:commune/:quartier/:telConduct' element={<UpdatConductor />} />
+      <Route path='AddCondu' element={<AddConductor />} />
+      <Route path='AddProprio' element={<AddProprio />} />
+      <Route path='RechargeForm' element={<RechargeForm />} />
+      <Route path='condu' element={ <DashConduct /> } />
+      <Route path='proprio' element={<DashProprio /> } />
+      <Route path='Rechar' element={<DashRecharg />} />
+
+      {/* Route pour Modifier  */}
+
+      <Route path='/UpdatConductor/:nom/:prenom/:commune/:quartier/:telConduct/:id' element={<UpdatConductor />} />
       <Route path='/UpdatProprio/:nom/:prenom/:commune/:quartier/:telProprio/:nbVehicules/:id' element={<UpdatProprio />} />
-     <Route path='condu' element={ <DashConduct /> } />
-    <Route path='proprio' element={<DashProprio /> } />
-     <Route path='Rechar' element={<DashRecharg />} />
-     <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id' element={<UpdatRecharge />} />
+      <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id' element={<UpdatRecharge />} />
+     
+     {/* Route pour fait ds rtour */}
+
+      <Route path='/AddProprio/proprio' element={<DashProprio /> } />
+      <Route path='/AddCondu/condu' element={<DashConduct /> } />
+      <Route path='/RechargeForm/Rechar' element={<DashRecharg /> } />
+      <Route path='/UpdatConductor/:nom/:prenom/:commune/:quartier/:telConduct/:id/condu' element={<DashConduct /> } />
+      <Route path='/UpdatProprio/:nom/:prenom/:commune/:quartier/:telProprio/:nbVehicules/:id/proprio' element={<DashProprio /> } />
+      <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id/Rechar' element={<DashRecharg /> } />
+
       </Routes>
     
      {/* <UpdatRecharge /> */}

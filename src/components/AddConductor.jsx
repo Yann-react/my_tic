@@ -1,11 +1,42 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import arrowLeft from '../assets/arrow-left.svg'
 import '../styles/AddConductor.css'
 import Entete from "./Entete";
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 export default function AddConductor() {
+  const navigate = useNavigate()
 
+
+  function verifierConnexion(){
+    if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+        const matricul = window.sessionStorage.getItem("matricule")
+        const password = window.sessionStorage.getItem("mdp")
+       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+    
+     axios.get(url)
+         .then(function (response) {
+             console.log(response.data);
+             if(response.data.succes){
+                 //Ok il est connecté, il peut rester
+             }else{
+                 //Il degage
+                navigate('/');
+             }
+         })
+         .catch(function (error) {
+             console.log(error);
+         })
+         .then(function () {
+         })  
+    }else{
+        //Deco
+        navigate('/');
+    }
+}
+useEffect(()=>{
+  verifierConnexion()
+},[])
 
   function handleSbmit1(){
       
@@ -19,7 +50,9 @@ export default function AddConductor() {
        axios.get(url)
        .then(function (response) {
          // handle success
-         console.log(response);
+         if(response.data.succes){
+          alert('Conducteur à bien été ajouté')
+         }
        })
        .catch(function (error) {
          // handle error
@@ -36,12 +69,12 @@ export default function AddConductor() {
 
   return (
     <>
-   <Entete nomComplet="AMANI KONE" lienProfil="#" />
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
 
      <div className='recha'>
     <div className='box-add'>
     <div className="teteRecharge">
-        <img src={arrowLeft} height="30" className='arrowleft' />
+    <img src={arrowLeft} height="30" className='arrowleft' onClick={()=>navigate('condu')} />
         <h1 className='title-add'>CONDUCTEUR</h1>
     </div>
     <div className='formAddCon'>

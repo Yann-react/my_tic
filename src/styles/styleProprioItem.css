@@ -1,4 +1,4 @@
-#recharg{
+/* #recharg{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,21 +29,38 @@
 #recharg :nth-child(0n+4){
     width: 15%;
     color: #0FA958;
+} */
+#box-r{
+    border: solid 1px;
+    display: flex;
+    justify-content: space-between;
+}
+#box-r div{
+    width: 20%;
+    font-weight: 500;
+    color: black;
+}
+#box-r :nth-child(0n+2){
+    width: 35%;
+    color: #4d89e4;
+}
+#box-r :nth-child(0n+1){
+    width: 30%;
+}
+#box-r   :nth-child(0n+4){
+    width: 15%;
+    color: #0FA958;
 }
 
 .modSuppr{
-    /* position: absolute;
-    right: 840px;
-    top: 12px;
-    height: 40px;
-    display: flex;
-    justify-content: end; */
-}
-/* .modif{
-    position: absolute;
-    right: 20px;
+   display: flex;
+   width: 50px;
+   justify-content: space-between;
+   border: none;
 
-} */
-img{
-    /* border: solid 1px; */
+}
+.mod{
+    position: relative;
+    top: -21px;
+    left: 500px;
 }

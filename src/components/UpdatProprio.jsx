@@ -1,10 +1,42 @@
-import React, {useState} from 'react'
+import React, {useState ,useEffect} from 'react'
 import arrowLeft from '../assets/arrow-left.svg'
 import Entete from "./Entete";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 export default function UpdatProprio() {
+  const navigate = useNavigate()
+
 const params = useParams()
+
+
+function verifierConnexion(){
+  if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+      const matricul = window.sessionStorage.getItem("matricule")
+      const password = window.sessionStorage.getItem("mdp")
+     const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+  
+   axios.get(url)
+       .then(function (response) {
+           console.log(response.data);
+           if(response.data.succes){
+               //Ok il est connecté, il peut rester
+           }else{
+               //Il degage
+              navigate('/');
+           }
+       })
+       .catch(function (error) {
+           console.log(error);
+       })
+       .then(function () {
+       })  
+  }else{
+      //Deco
+      navigate('/');
+  }
+}
 
 const [nom, setNom] = useState('')
   const [prenom, setPrenom] = useState('')
@@ -53,19 +85,25 @@ const [nom, setNom] = useState('')
     })  
 
 }
+useEffect(()=>{
+  verifierConnexion()
+},[])
 
 function handleupdate (){
   
       setProprio(nom,prenom,commune,quartier,telephone,nombreCondu,params.id)
-    console.log("ok")
+      alert('Proprietaire à bien été modifié')
+
 }
 console.log(params.prenom);
   return (
     <>
+            <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
+
     <div className='recha'>
       <div className='box-add-p'>
       <div className="teteRecharge">
-          <img src={arrowLeft} height="30" className='arrowleft' />
+      <img src={arrowLeft} height="30" className='arrowleft' onClick={()=>navigate('proprio')} />
           <h1 className='title-add'>PROPRIETAIRE</h1>
       </div>
       <div action="" className='formAddCon'>

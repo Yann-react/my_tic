@@ -1,13 +1,47 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
 import '../styles/RechargeForm.css'
 import arrowLeft from '../assets/arrow-left.svg'
 import Entete from "./Entete";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 export default function UpdatRecharge() {
 
-  
+  const navigate = useNavigate()
+
   const params = useParams()
+
+  
+  function verifierConnexion(){
+    if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+        const matricul = window.sessionStorage.getItem("matricule")
+        const password = window.sessionStorage.getItem("mdp")
+       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+    
+     axios.get(url)
+         .then(function (response) {
+             console.log(response.data);
+             if(response.data.succes){
+                 //Ok il est connecté, il peut rester
+             }else{
+                 //Il degage
+                navigate('/');
+             }
+         })
+         .catch(function (error) {
+             console.log(error);
+         })
+         .then(function () {
+         })  
+    }else{
+        //Deco
+        navigate('/');
+    }
+}
+useEffect(()=>{
+  verifierConnexion()
+},[])
 
 const [nom, setNom] = useState('')
   const [montant, setMontant] = useState('')
@@ -53,17 +87,17 @@ const [nom, setNom] = useState('')
     function handleupdate (){
       
           setRecha(nom,montant,moyPay,telephone,params.id)
-        console.log("ok")
-    }
+          alert('Rechargement à bien été modifié')
+        }
 
   return (
     <>
-                    <Entete nomComplet="AMANI KONE" lienProfil="#" />
+        <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
 
     <div className='recha'>
     <div className='box-recha'>
     <div className="teteRecharge">
-        <img src={arrowLeft} height="30" className='arrowleft' />
+    <img src={arrowLeft} height="30" className='arrowleft' onClick={()=>navigate('Rechar')} />
         <h1 className='titile-recha'>RECHARGEMENT</h1>
     </div>
     <div action="" className='formRech'>
@@ -78,10 +112,9 @@ const [nom, setNom] = useState('')
         <input type="text" name='montant'id='montant' placeholder={params.montant} value={montant} onChange={onInputChange1}/>
         <label htmlFor="moyenPayement">Moyen Payement</label>
         <select name="moyenPayement" id="moyPay" placeholder={params.moyPay}  onChange={onInputChange2}>
-            <option label="wave" value={moyPay} >Wave</option>
-            <option label="OrangeMoney" value={moyPay}>Orange Money</option>
-            <option label="MoovMoney" value={moyPay}>Moov Money</option>
-            <option label="MtnMoney" value={moyPay}>Mtn Money</option>
+            <option value="1">WAVE</option>
+            <option value="2">ORANGE MONEY</option>
+            <option value="3">ESPECE</option>
         </select>
         </div>
         <button className='but-recha' onClick={handleupdate }>MODIFIER</button>

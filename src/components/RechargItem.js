@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import '../styles/styleRechargItem.css';
 import Delete from '../assets/delete.svg'
@@ -9,8 +9,38 @@ import { useNavigate } from 'react-router-dom';
 
 export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, montant, telephone}){
    
+
     const navigate = useNavigate()
 
+    function verifierConnexion(){
+        if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+            const matricul = window.sessionStorage.getItem("matricule")
+            const password = window.sessionStorage.getItem("mdp")
+           const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+        
+         axios.get(url)
+             .then(function (response) {
+                 console.log(response.data);
+                 if(response.data.succes){
+                     //Ok il est connecté, il peut rester
+                 }else{
+                     //Il degage
+                    navigate('/');
+                 }
+             })
+             .catch(function (error) {
+                 console.log(error);
+             })
+             .then(function () {
+             })  
+        }else{
+            //Deco
+            navigate('/');
+        }
+    }
+    useEffect(()=>{
+      verifierConnexion()
+    },[])
 
     function deleteRecharg(id){
         const url =  encodeURI("http://tryconnectadmin/deleteProprio.php?id="+id);
@@ -30,25 +60,27 @@ export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, 
         }
     function handledelete (){
         deleteRecharg(idRecharg)
-        console.log("ok")
+        alert('Rechargement à bien été supprimé')
+
     }
     function handleupdate2(){
         navigate(`/UpdatRecharge/${conducteur}/${montant}/${moyen}/${telephone}/${idRecharg}`);
         }
 
     return (
-        <div id="recharg">
+        <div>
+
+        <div id="box-R">
             <div> {dateRecharg} </div>
             <div> {conducteur} </div>
             <div> {telephone} </div>
             <div> {moyen} </div>
             <div> {montant} </div>
-            <div className='modSuppr'>
-            <img src={Delete} height="17px" onClick={handledelete}   />
-                
-                
-                <img src={update} height="17px" className='upadt' onClick={handleupdate2}/>
+            <div className='mods'>
+            <img src={Delete} height="17px" className='dlt' onClick={handledelete}   />
+            <img src={update} height="17px"  className='updt' onClick={handleupdate2} />
             </div>
+        </div>
         </div>
     );
 }

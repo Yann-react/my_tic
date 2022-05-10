@@ -70,30 +70,30 @@
     overflow: hidden;
 }
 
-#listeSommaire{
+#listeSommaires{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0px 30px;
+    width: 95%;
+    align-self: center;
     margin-bottom: 5px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 10px; 
+    justify-content: space-between;
 }
 
-#listeSommaire div{
+#listeSommaires div{
     width: 20%;
     font-weight: bold;
     color: black;
 }
 
-#listeSommaire :nth-child(0n+2){
-    width: 35%;
-}
-
-#listeSommaire :nth-child(0n+1){
+#listeSommaires :nth-child(0n+2){
     width: 30%;
 }
 
-#listeSommaire :nth-child(0n+4){
+#listeSommaires :nth-child(0n+1){
+    width: 30%;
+}
+#listeSommaires :nth-child(0n+5){
     width: 15%;
 }
+

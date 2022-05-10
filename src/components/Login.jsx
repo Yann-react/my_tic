@@ -1,4 +1,4 @@
-import React , {Component }from 'react'
+import React, {useEffect} from 'react'
 import '../styles/Login.css'
 import { useNavigate } from "react-router-dom";
 import Entete from "./Entete";
@@ -7,6 +7,36 @@ import md5 from 'md5';
 export default function Login() {
     const navigate = useNavigate()
 
+    function verifierConnexion(){
+        if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+            const matricul = window.sessionStorage.getItem("matricule")
+            const password = window.sessionStorage.getItem("mdp")
+           const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+        
+         axios.get(url)
+             .then(function (response) {
+                 console.log(response.data);
+                 if(response.data.succes){
+                     //Ok il est connecté, il peut rester
+                 }else{
+                     //Il degage
+                    navigate('/');
+                 }
+             })
+             .catch(function (error) {
+                 console.log(error);
+             })
+             .then(function () {
+             })  
+        }else{
+            //Deco
+            navigate('/');
+        }
+    }
+
+    useEffect(()=>{
+        verifierConnexion()
+      },[])
    function handleSbmit(){
     const matricul = document.getElementById('matricul').value
     const password = md5(document.getElementById('password').value)
@@ -43,7 +73,7 @@ export default function Login() {
     return (
     <>
               
-                <Entete lienProfil="#" />
+                <Entete showAjouter={false} lienProfil="#" />
 
     <div className="box-lo">
 
