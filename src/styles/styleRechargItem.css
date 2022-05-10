@@ -2,10 +2,9 @@
 #box-R{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     margin-left: 10px;
     margin-right: 10px;
-    padding-top: 7px;
     border-bottom: solid 1px;
     align-self: center;
 
@@ -19,13 +18,13 @@
     width: 20%;
     color: #4d89e4;
   position: absolute;
-    left:  420px;
+    left:  390px;
 }
 #box-R :nth-child(0n+3){
     width: 10%;
    
     position: absolute;
-    right:  580px;
+    right:  530px;
 }
 #box-R :nth-child(0n+1){
     width: 30%;
@@ -34,16 +33,21 @@
     width: 10%;
     color: #0FA958;
     position: absolute;
-    right:  322px;
+    right:  290px;
 }
 #box-R   :nth-child(0n+5){
     width: 9%;
     position: absolute;
-    right:  90px;
+    right:  70px;
 }
 
-.dlt{
-    position:absolute;
-left:400px;
-
+.mods{
+    position: relative;
+    top: -22px;
+    left: 520px;
+    
+}
+.up{
+    position: relative;
+    left: 15px;
 }

@@ -7,10 +7,15 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 export default function UpdatRecharge() {
-
-  const navigate = useNavigate()
-
-  const params = useParams()
+    
+    const navigate = useNavigate()
+    
+    const params = useParams()
+    
+    // const [nom, setNom] = useState('')
+    // const [montant, setMontant] = useState('')
+    // const [moyPay, setMoyPay] = useState('')
+    // const [telephone, setTelephone] = useState('')
 
   
   function verifierConnexion(){
@@ -39,34 +44,28 @@ export default function UpdatRecharge() {
         navigate('/');
     }
 }
-useEffect(()=>{
-  verifierConnexion()
-},[])
 
-const [nom, setNom] = useState('')
-  const [montant, setMontant] = useState('')
-  const [moyPay, setMoyPay] = useState('')
-  const [telephone, setTelephone] = useState('')
- 
 
-  function onInputChange(e){
-    setNom( e.target.value)
+
+function onInputChange(e){
+    // setNom( e.target.value)
+    // console.log(e.target.value)
+}
+function onInputChange1(e){
+    // setMontant(e.target.value)
    }
-  function onInputChange1(e){
-   setMontant(e.target.value)
-   }
-  function onInputChange2(e){
-  const pau = e.target.value 
-    setMoyPay(pau )
-   }
+   function onInputChange2(e){
+    //    const pau = e.target.value 
+    //    setMoyPay(pau )
+    }
   
-  function onInputChange3(e){
-   setTelephone(e.target.value)
-   }
- 
-      
+    function onInputChange3(e){
+//    setTelephone(e.target.value)
+}
 
-      function setRecha(nom,montant,moyPay,telephone, id){
+
+
+function setRecha(nom,montant,moyPay,telephone, id){
         let url = 'http://tryconnectadmin/setRecharg.php?nomComplet='+nom+'&montant='+montant+'&moyenPay='+moyPay+'&telephone='+telephone+'&id='+id;
         axios.get(url)
         .then(function (response) {
@@ -81,18 +80,27 @@ const [nom, setNom] = useState('')
         .then(function () {
             // always executed
         })  
-    
+        
     }
     
     function handleupdate (){
-      
+         const nom= document.getElementById('nom').value
+         const montant= document.getElementById('montant').value
+         const moyPay= document.getElementById('moyPay').value
+         const telephone= document.getElementById('telephone').value
+         
           setRecha(nom,montant,moyPay,telephone,params.id)
           alert('Rechargement à bien été modifié')
+          navigate('Rechar')
+        
         }
 
-  return (
-    <>
-        <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
+        useEffect(()=>{
+          verifierConnexion()
+        },[])
+        return (
+            <>
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
 
     <div className='recha'>
     <div className='box-recha'>
@@ -103,15 +111,15 @@ const [nom, setNom] = useState('')
     <div action="" className='formRech'>
         <div className="nomComp">
         <label htmlFor="nomComplet">Nom Complet</label>
-        <input type="text" name='nomComplet'id='nom' placeholder={params.nomComplet} value={nom} onChange={onInputChange}/>
+        <input type="text" name='nomComplet'id='nom' defaultValue={params.nomComplet}  onChange={onInputChange} />
         <label htmlFor="telephone">telephone</label>
-        <input type="text" name='telephone'id='telephone' placeholder={params.telephone} value={telephone} onChange={onInputChange3}/>
+        <input type="text" name='telephone'id='telephone' defaultValue={params.telephone}  onChange={onInputChange3}/>
         </div>
         <div className="payement">
         <label htmlFor="montant">Montant</label>
-        <input type="text" name='montant'id='montant' placeholder={params.montant} value={montant} onChange={onInputChange1}/>
+        <input type="text" name='montant'id='montant' defaultValue={params.montant}  onChange={onInputChange1}/>
         <label htmlFor="moyenPayement">Moyen Payement</label>
-        <select name="moyenPayement" id="moyPay" placeholder={params.moyPay}  onChange={onInputChange2}>
+        <select name="moyenPayement" id="moyPay" defaultValue={params.moyPay}  onChange={onInputChange2}>
             <option value="1">WAVE</option>
             <option value="2">ORANGE MONEY</option>
             <option value="3">ESPECE</option>

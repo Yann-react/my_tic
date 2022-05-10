@@ -43,7 +43,7 @@ export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, 
     },[])
 
     function deleteRecharg(id){
-        const url =  encodeURI("http://tryconnectadmin/deleteProprio.php?id="+id);
+        const url =  encodeURI("http://tryconnectadmin/deleteRecharg.php?id="+id);
         
          axios.get(url)
             .then(function (response) {
@@ -60,7 +60,8 @@ export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, 
         }
     function handledelete (){
         deleteRecharg(idRecharg)
-        alert('Rechargement à bien été supprimé')
+        // alert('Rechargement à bien été supprimé')
+        window.location.reload();
 
     }
     function handleupdate2(){
@@ -76,11 +77,11 @@ export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, 
             <div> {telephone} </div>
             <div> {moyen} </div>
             <div> {montant} </div>
-            <div className='mods'>
-            <img src={Delete} height="17px" className='dlt' onClick={handledelete}   />
-            <img src={update} height="17px"  className='updt' onClick={handleupdate2} />
-            </div>
         </div>
+            <div className='mods'>
+            <img src={Delete} height="17px"  onClick={handledelete}   />
+            <img src={update} height="17px" className='up' onClick={handleupdate2} />
+            </div>
         </div>
     );
 }

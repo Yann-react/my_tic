@@ -38,34 +38,28 @@ function verifierConnexion(){
   }
 }
 
-const [nom, setNom] = useState('')
-  const [prenom, setPrenom] = useState('')
-  const [commune, setCommune] = useState('')
-  const [telephone, setTelephone] = useState('')
-  const [quartier, setQuartier]= useState('')  
-  const [nombreCondu, setNombreCondu]= useState('')  
 
 
-  function onInputChange(e){
-    setNom( e.target.value)
-   }
-  function onInputChange1(e){
-   setPrenom(e.target.value)
-   }
-  function onInputChange2(e){
-   setCommune(e.target.value)
-   }
+  // function onInputChange(e){
+  //   setNom( e.target.value)
+  //  }
+  // function onInputChange1(e){
+  //  setPrenom(e.target.value)
+  //  }
+  // function onInputChange2(e){
+  //  setCommune(e.target.value)
+  //  }
   
-  function onInputChange3(e){
-   setTelephone(e.target.value)
-   }
-  function onInputChange4(e){
-   setQuartier(e.target.value)
-   }
+  // function onInputChange3(e){
+  //  setTelephone(e.target.value)
+  //  }
+  // function onInputChange4(e){
+  //  setQuartier(e.target.value)
+  //  }
   
-  function onInputChange5(e){
-   setNombreCondu(e.target.value)
-   }
+  // function onInputChange5(e){
+  //  setNombreCondu(e.target.value)
+  //  }
   
 
   function setProprio(nom, prenom, commune, quartier, telephone, nombreCondu, id){
@@ -85,20 +79,27 @@ const [nom, setNom] = useState('')
     })  
 
 }
-useEffect(()=>{
-  verifierConnexion()
-},[])
 
 function handleupdate (){
-  
-      setProprio(nom,prenom,commune,quartier,telephone,nombreCondu,params.id)
-      alert('Proprietaire à bien été modifié')
+  const nom = document.getElementById('nom').value
+  const prenom = document.getElementById('prenom').value
+  const commune = document.getElementById('commun').value
+  const telephone = document.getElementById('telephone').value
+  const quartier  = document.getElementById('quartier').value 
+  const nombreCondu  = document.getElementById('nombreCondu').value 
 
-}
-console.log(params.prenom);
+  setProprio(nom,prenom,commune,quartier,telephone,nombreCondu,params.id)
+  alert('Proprietaire à bien été modifié')
+      navigate('proprio')
+      
+    }
+    console.log(params.prenom);
+    useEffect(()=>{
+      verifierConnexion()
+    },[])
   return (
     <>
-            <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
 
     <div className='recha'>
       <div className='box-add-p'>
@@ -109,21 +110,21 @@ console.log(params.prenom);
       <div action="" className='formAddCon'>
           <div className="presenProprio">
           <label htmlFor="nom" className='nmPro'>Nom</label>
-          <input type="text" name='nom' placeholder={params.nom}  value={nom} onChange={onInputChange}/>
+          <input type="text" name='nom' id='nom' defaultValue={params.nom} />
           <label htmlFor="prenom">Prenom</label>
-          <input type="text" name='prenom' placeholder={params.prenom}  value={prenom} onChange={onInputChange1} />
+          <input type="text" name='prenom' id='prenom' defaultValue={params.prenom}   />
           </div>
           <div className="adressProprio">
           <label htmlFor="nombreCondu">Nombre De Conducteur</label>
-          <input type="text" name='nombreCondu'placeholder={params.nbVehicules}  value={nombreCondu} onChange={onInputChange5} />
+          <input type="text" name='nombreCondu'   id='nombreCondu' defaultValue={params.nbVehicules}    />
           <label htmlFor="telephone">Téléphone</label>
-          <input type="text" name='telephone'placeholder={params.telProprio}  value={telephone} onChange={onInputChange3} />
+          <input type="text" name='telephone' id='telephone' defaultValue={params.telProprio}  />
           </div>
           <div className='quartirs'>
           <label htmlFor="Commune Du Conducteur">Commune Du Conducteur</label>
-          <input type="text" name='Commune Du Conducteur' id='commun'placeholder={params.commune}  value={commune} onChange={onInputChange2} />
+          <input type="text" name='Commune Du Conducteur' id='commun' defaultValue={params.commune}   />
           <label htmlFor="Quartier Du Conducteur" className='cond'>Quartier Du Conducteur</label>
-          <input type="text" name='Quartier Du Conducteur' placeholder={params.quartier} id='quartier' value={quartier} onChange={onInputChange4} />
+          <input type="text" name='Quartier Du Conducteur' defaultValue={params.quartier} id='quartier'   />
           </div>
           <button className='but-condu-p' onClick={handleupdate}>MODIFIER</button>
       </div>

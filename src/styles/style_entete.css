@@ -50,9 +50,23 @@
 #logo{
     margin: auto 30px;
     font-weight: bold;
+    font-size: 20px;
+    color: red;
+}
+
+#logo:hover{
+    cursor: pointer;
 }
 
 #userName{
     margin: auto 10px;
     font-weight: 500;
+}
+
+.m{
+    color: #012840;
+}
+
+.tir{
+    color: #012840;
 }

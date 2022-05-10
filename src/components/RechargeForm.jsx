@@ -34,38 +34,40 @@ export default function RechargeForm() {
         navigate('/');
     }
 }
-useEffect(()=>{
-  verifierConnexion()
-},[])
+
+function handleSbmit3(){
   
-  function handleSbmit3(){
-    
-    const nom = document.getElementById('nom').value
-    const telephone = document.getElementById('telephone').value
-    const montant = document.getElementById('montant').value
-    const moyPay = document.getElementById('moyPay').value
-    const admin = sessionStorage.getItem("matricule");
-       const url =  encodeURI("http://tryconnectadmin/addRecharg.php?nomComplet="+nom+"&montant="+montant+"&moyenPay="+moyPay+"&telephone="+telephone+"&idAdmin="+admin)
+  const nom = document.getElementById('nom').value
+  const telephone = document.getElementById('telephone').value
+  const montant = document.getElementById('montant').value
+  const moyPay = document.getElementById('moyPay').value
+  const admin = sessionStorage.getItem("matricule");
+  const url =  encodeURI("http://tryconnectadmin/addRecharg.php?nomComplet="+nom+"&montant="+montant+"&moyenPay="+moyPay+"&telephone="+telephone+"&idAdmin="+admin)
 
        axios.get(url)
        .then(function (response) {
          // handle success
          if(response.data.succes){
-          alert('Rechargement à bien été ajouté')
-         }
-       })
-       .catch(function (error) {
-         // handle error
-         console.log(error);
-       })
-       .then(function () {
-         // always executed
-       });
-      }
+           alert('Rechargement à bien été ajouté')
+           navigate('Rechar')
 
-  return (
-    <>
-                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#"  />
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+      }
+      
+      useEffect(()=>{
+        verifierConnexion()
+      },[])
+      return (
+        <>
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
 
     <div className='recha'>
     <div className='box-recha'>

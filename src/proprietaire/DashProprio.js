@@ -7,10 +7,10 @@ import axios from 'axios';
 export default function DashProprio(){
 
     const [proprio, setProprio] = useState([])
-
+    const [dates, setDates] = useState([])
 
     function getProprioFromFiltres(dateDeb, dateFin, nombreConductMin, nombreConductMax, commune, quartier){
-        let req ='http://tryconnectadmin/getProprioFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&nombreConductMin='+nombreConductMin+'&nombreConductMax='+nombreConductMax;
+        let req ='http://tryconnectadmin/getProprioFromFiltresByAdmin.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&nombreConductMin='+nombreConductMin+'&nombreConductMax='+nombreConductMax+'&idAdmin='+sessionStorage.getItem("matricule");
         if(commune != ''){
             req = req + '&commune='+commune;
         }
@@ -49,19 +49,52 @@ export default function DashProprio(){
     
 
 
+    function  DateFin(separator=''){
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        
+        
+        
+        return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+        }
+        let result = DateFin()[0]+DateFin()[1]+DateFin()[2]+DateFin()[3]+"-"+DateFin()[4]+DateFin()[5]+"-"+DateFin()[6]+DateFin()[7];
+        // console.log(result);
 
-   
+
+        function DateDeb(){
+            axios.get('http://tryconnectadmin/getFirstDateRecharg.php')
+            .then(function (response) {
+              // handle success
+              document.getElementById('datedeb').setAttribute('defaultValue', response.data.resultat);
+              setDates(response.data.resultat);
+              validFiltres2()
+              console.log(dates);
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+        }
+        useEffect(()=>{
+            DateDeb()
+        },[])
+            
 
     return (
         <div>
-            <Entete nomComplet="AMANI KONE" lienProfil="#" name="proprietaire"/>
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} name="proprietaire" lienProfil="#"  />
             <TitleBar titre='PROPRIETAIRES' nombre={25} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>
                 <div className='filtreRow'>
-                        <input type='date' id='datedeb'/>
+                        <input type='date' id='datedeb' defaultValue={dates}/>
                         <span>-</span>
-                        <input type='date' id='datefin'/>
+                        <input type='date' id='datefin' defaultValue={result}/>
                     </div>   
                     <div className='filtreLabel'>Commune Recherchée</div>
                     <div className='filtreRow'>
@@ -73,9 +106,9 @@ export default function DashProprio(){
                     </div>
                     <div className='filtreLabel'>Nombre de Conducteurs Recherchés</div>
                     <div className='filtreRow'>
-                        <input type='number' min="1" step='1' id='conducteur1'/>
+                        <input type='number' min="1" step='1' id='conducteur1' defaultValue="0"/>
                         <span>-</span>
-                        <input type='number' min="1" step='1' id='conducteur2'/>
+                        <input type='number' min="1" step='1' id='conducteur2' defaultValue="10000"/>
                     </div>
                     <div id='validFiltresRow'>
                         <div id='validFiltres' onClick={validFiltres2}>VALIDER</div>
@@ -89,7 +122,7 @@ export default function DashProprio(){
                 <div>Adresse Recherchée</div>
             </div>
             <div id='listeBox'>
-            {proprio.map((item,i)=>(<ProprioItem key={i} idproprio={item.id} dateProprio={item.date} nomComplet={item.nom+" "+item.prenom } telProprio={item.telephone} nbVehicules={item.nombreConduct} adresseRecherch={item.communeRech+"-"+item.quartierRech} nom ={item.nom} prenom={item.prenom} quartier={item.quartierRech} commune={item.communeRech} />))}
+            {(proprio.length==0)? <div></div> : proprio.map((item,i)=>(<ProprioItem key={i} idproprio={item.id} dateProprio={item.date} nomComplet={item.nom+" "+item.prenom } telProprio={item.telephone} nbVehicules={item.nombreConduct} adresseRecherch={item.communeRech+"-"+item.quartierRech} nom ={item.nom} prenom={item.prenom} quartier={item.quartierRech} commune={item.communeRech} />))}
 
             </div>
             </div>

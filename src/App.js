@@ -46,6 +46,8 @@ export default function App() {
       <Route path='/UpdatProprio/:nom/:prenom/:commune/:quartier/:telProprio/:nbVehicules/:id/proprio' element={<DashProprio /> } />
       <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id/Rechar' element={<DashRecharg /> } />
 
+    
+
       </Routes>
     
      {/* <UpdatRecharge /> */}

@@ -44,7 +44,9 @@ function handleSbmit2(){
   const commun= document.getElementById('commun').value
     const telephone = document.getElementById('telephone').value
     const nombreCondu = document.getElementById('nombreCondu').value
-    const url =  encodeURI("http://tryconnectadmin/addProprio.php?nom="+nom+"&prenom="+prenom+"&communeCondu="+commun+"&quartierCondu="+quartier+"&telephone="+telephone+"&nombreCondu="+nombreCondu)
+    const idAdmin = sessionStorage.getItem("idAdmin");
+
+    const url =  encodeURI("http://tryconnectadmin/addProprio.php?nom="+nom+"&prenom="+prenom+"&communeCondu="+commun+"&quartierCondu="+quartier+"&telephone="+telephone+"&nombreCondu="+nombreCondu+"&idAdmin="+idAdmin)
 
        axios.get(url)
        .then(function (response) {
@@ -66,7 +68,7 @@ function handleSbmit2(){
       },[])
       return (
         <>
-                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
 
     <div className='recha'>
       <div className='box-addPro'>

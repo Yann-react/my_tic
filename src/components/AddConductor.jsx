@@ -34,42 +34,46 @@ export default function AddConductor() {
         navigate('/');
     }
 }
-useEffect(()=>{
-  verifierConnexion()
-},[])
 
-  function handleSbmit1(){
-      
-      const nom = document.getElementById('nom').value
+function handleSbmit1(){
+  
+  const nom = document.getElementById('nom').value
       const prenom = document.getElementById('prenom').value
       const commun = document.getElementById('commun').value
       const telephone = document.getElementById('telephone').value
       const quartier = document.getElementById('quartier').value
-      const url =  encodeURI("http://tryconnectadmin/addConduct.php?nom="+nom+"&prenom="+prenom+"&commune="+commun+"&quartier="+quartier+"&telephone="+telephone)
+      const idAdmin = sessionStorage.getItem("idAdmin");
 
-       axios.get(url)
-       .then(function (response) {
-         // handle success
+      const url =  encodeURI("http://tryconnectadmin/addConduct.php?nom="+nom+"&prenom="+prenom+"&commune="+commun+"&quartier="+quartier+"&telephone="+telephone+"&idAdmin="+idAdmin)
+      
+      axios.get(url)
+      .then(function (response) {
+        // handle success
          if(response.data.succes){
-          alert('Conducteur à bien été ajouté')
-         }
-       })
-       .catch(function (error) {
+           alert('Conducteur à bien été ajouté')
+          navigate('condu')
+
+        }
+      })
+      .catch(function (error) {
          // handle error
          console.log(error);
-       })
-       .then(function () {
-         // always executed
-       });
-   }
-   
-
-
-
-
-  return (
-    <>
-                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
+        })
+        .then(function () {
+          // always executed
+        });
+      }
+      
+      useEffect(()=>{
+        verifierConnexion()
+      },[])
+      
+      
+      
+      
+      return (
+        <>
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
 
      <div className='recha'>
     <div className='box-add'>

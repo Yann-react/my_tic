@@ -45,9 +45,9 @@ useEffect(()=>{
                     <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
 
         <div className='box-menu'>
-            <div className='box-condu'><img src={driv}  height="170px" onClick={()=> navigate('/condu') } /><h2 id='titl-box-mnu'>CONDUCTEUR</h2></div>
-            <div className='box-propr'><img src={owner} height="170px"  onClick={()=> navigate('/proprio') }  /><h2 id='titl-box-mnu'>PROPRIETAIRE</h2></div>
-            <div className='box-rechar'><img src={rechar}  height="170px" onClick={()=> navigate('/rechar') } /><h2 id='titl-box-mnu'>RECHARGEMENT</h2></div>
+            <div className='box-condu' onClick={()=> navigate('/condu') }><img src={driv}  className='img1'  height="170px"  /><h2 id='titl-box-mnu'>CONDUCTEUR</h2></div>
+            <div className='box-propr' onClick={()=> navigate('/proprio') } ><img src={owner} className='img1'  height="170px"   /><h2 id='titl-box-mnu'>PROPRIETAIRE</h2></div>
+            <div className='box-rechar' onClick={()=> navigate('/rechar') } ><img src={rechar}   className='img1' height="170px" /><h2 id='titl-box-mnu'>RECHARGEMENT</h2></div>
         </div>
     </>
   )

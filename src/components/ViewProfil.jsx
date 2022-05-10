@@ -35,14 +35,14 @@ function verifierConnexion(){
       navigate('/');
   }
 }
- useEffect(()=>{
-   verifierConnexion()
- },[])
-  function deconnecter(){
-    window.sessionStorage.removeItem('matricule');
-    window.sessionStorage.removeItem('mdp');
-    navigate('/');
+function deconnecter(){
+  window.sessionStorage.removeItem('matricule');
+  window.sessionStorage.removeItem('mdp');
+  navigate('/');
 }
+useEffect(()=>{
+  verifierConnexion()
+},[])
   return (
     <>
             <Entete showAjouter={false} lienProfil="#" />

@@ -34,11 +34,8 @@ export default function Login() {
         }
     }
 
-    useEffect(()=>{
-        verifierConnexion()
-      },[])
-   function handleSbmit(){
-    const matricul = document.getElementById('matricul').value
+    function handleSbmit(){
+        const matricul = document.getElementById('matricul').value
     const password = md5(document.getElementById('password').value)
        const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
     
@@ -53,7 +50,7 @@ export default function Login() {
                  navigate('/Menu');
              }else{
                  document.querySelector('.disactive').setAttribute('class',' .disactive active')
-             }
+                }
             //  response.data.succes? navigate('/Menu'):
          })
          .catch(function (error) {
@@ -62,16 +59,19 @@ export default function Login() {
          })
          .then(function () {
              // always executed
-         })  
-   }
+            })  
+        }
    
    
   
         
+        useEffect(()=>{
+            verifierConnexion()
+          },[])
   
-  
+        
     return (
-    <>
+        <>
               
                 <Entete showAjouter={false} lienProfil="#" />
 

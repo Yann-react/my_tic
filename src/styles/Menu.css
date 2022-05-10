@@ -7,7 +7,7 @@
     }
 
 .box-condu, .box-propr,.box-rechar{
-    width: 350px;
+    width: 300px;
     height: 300px;
     align-self: center;
     border-radius: 8px;
@@ -21,12 +21,28 @@ background-color: rgba(1, 40, 64, 1) ;
 }
 .box-propr{
 background-color: rgba(166, 23, 49, 1) ;
-
-
 }
 .box-rechar{
    background-color: black ; 
 }
 #titl-box-mnu{
     color: white;
+}
+.box-condu:hover{
+    transition: 0.3s;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.box-propr:hover{
+    transition: 0.3s;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.box-rechar:hover{
+    transition: 0.3s;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.img1{
+    margin-top: 20px;
 }

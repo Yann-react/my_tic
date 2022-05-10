@@ -38,63 +38,69 @@ export default function UpdatConductor(props) {
         navigate('/');
     }
 }
-useEffect(()=>{
-  verifierConnexion()
-},[])
-  const params = useParams()
-  const [nom, setNom] = useState('')
+const params = useParams()
+const [nom, setNom] = useState('')
   const [prenom, setPrenom] = useState('')
   const [commune, setCommune] = useState('')
   const [telephone, setTelephone] = useState('')
   const [quartier, setQuartier]= useState('')
-
- function onInputChange(e){
+  
+  function onInputChange(e){
    setNom( e.target.value)
   }
- function onInputChange1(e){
-  setPrenom(e.target.value)
+  function onInputChange1(e){
+    setPrenom(e.target.value)
   }
- function onInputChange2(e){
+  function onInputChange2(e){
   setCommune(e.target.value)
-  }
- 
+}
+
  function onInputChange3(e){
   setTelephone(e.target.value)
-  }
+}
  function onInputChange4(e){
   setQuartier(e.target.value)
-  }
+}
  
  
   function setConduct(nom, prenom, commune, quartier, telephone,id){
     let url = 'http://tryconnectadmin/setConduct.php?nom='+nom+'&commune='+commune+'&quartier='+quartier+'&telephone='+telephone+'&prenom='+prenom+'&id='+id;
     axios.get(url)
     .then(function (response) {
-        // handle success
+      // handle success
         console.log(response.data);
         // if(response.data.succ)
     })
     .catch(function (error) {
-        // handle error
-        console.log(error);
+      // handle error
+      console.log(error);
     })
     .then(function () {
         // always executed
     })  
-
+    
 }
 
 function handleupdate (){
-  
+  const nom = document.getElementById('nom').value
+  const prenom = document.getElementById('prenom').value
+  const commune = document.getElementById('commun').value
+  const telephone = document.getElementById('telephone').value
+  const quartier  = document.getElementById('quartier').value 
+
       setConduct(nom,prenom,commune,quartier,telephone,params.id)
       
         alert('Conducteur à bien été modifié')
-      
+        navigate('condu')
+        
 }
+useEffect(()=>{
+  verifierConnexion()
+},[])
 
-  return (
+return (
     <>
-      <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" />
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
 
   <div className='recha'>
     <div className='box-add'>
@@ -105,19 +111,19 @@ function handleupdate (){
     <div action="" className='formAddCon'>
         <div className="presenCon">
         <label htmlFor="nom">Nom</label>
-        <input type="text" name='nom' placeholder={params.nom} value={nom} onChange={onInputChange} />
+        <input type="text" name='nom' id='nom' defaultValue={params.nom}  />
         <label htmlFor="prenom">Prenom</label>
-        <input type="text" name='prenom' placeholder={params.prenom} value={prenom}  onChange={onInputChange1} />
+        <input type="text" name='prenom'  id='prenom' defaultValue={params.prenom}   />
         </div>
         <div className="adressCon">
         <label htmlFor="commun">Commune</label>
-        <input type="text" name='commun' placeholder={params.commune} value={commune}  onChange={onInputChange2} />
+        <input type="text" name='commun' id='commun' defaultValue={params.commune}    />
         <label htmlFor="telephone">Téléphone</label>
-        <input type="text" name='telephone' placeholder={params.telConduct} value={telephone}  onChange={onInputChange3} />
+        <input type="text" name='telephone' id='telephone' defaultValue={params.telConduct}    />
         </div>
         <div className='quartir'>
         <label htmlFor="quartier">Quartier</label>
-        <input type="text" name='quartier' placeholder={params.quartier} value={quartier}  onChange={onInputChange4} />
+        <input type="text" name='quartier' id='quartier' defaultValue={params.quartier}   />
         </div>
         <button className='but-condu' onClick={handleupdate}>MODIFIER</button>
     </div>

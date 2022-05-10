@@ -8,9 +8,10 @@ export default function DashRecharg(){
     
    
     const [client, setClient] = useState([])
+    const [dates, setDates] = useState([])
 
     function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, idAdmin, nomComplet, moyenPay){
-        let req = 'http://tryconnectadmin/getRechargFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax;
+        let req = 'http://tryconnectadmin/getRechargFromFiltresByAdmin.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax+'&idAdmin='+sessionStorage.getItem("matricule");
         if(telephone != ''){
             req = req + '&telephone='+telephone;
         }
@@ -40,6 +41,7 @@ export default function DashRecharg(){
           // always executed
         });
     }
+ 
 
     function validFiltres(){
         const nom = document.getElementById('nomCom').value      
@@ -53,7 +55,7 @@ export default function DashRecharg(){
 
         getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, idadmin, nom, pay);
     }
-   function  getCurrentDate(separator=''){
+   function  DateFin(separator=''){
         let newDate = new Date()
         let date = newDate.getDate();
         let month = newDate.getMonth() + 1;
@@ -63,25 +65,46 @@ export default function DashRecharg(){
         
         return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
         }
-        let result = getCurrentDate()[0]+getCurrentDate()[1]+getCurrentDate()[2]+getCurrentDate()[3]+"-"+getCurrentDate()[4]+getCurrentDate()[5]+"-"+getCurrentDate()[6]+getCurrentDate()[7];
-        console.log(result);
-    return (
+        let result = DateFin()[0]+DateFin()[1]+DateFin()[2]+DateFin()[3]+"-"+DateFin()[4]+DateFin()[5]+"-"+DateFin()[6]+DateFin()[7];
+        // console.log(result);
+        function DateDeb(){
+            axios.get('http://tryconnectadmin/getFirstDateRecharg.php')
+            .then(function (response) {
+              // handle success
+              document.getElementById('datedeb').setAttribute('defaultValue', response.data.resultat);
+              setDates(response.data.resultat);
+              validFiltres()
+              console.log(dates);
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+        }
+        useEffect(()=>{
+            DateDeb()
+        },[])
+
+             return (
         <div>
-            <Entete nomComplet="AMANI KONE" lienProfil="#" name="rechargement"/>
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#"  />
             <TitleBar titre='RECHARGEMENTS' nombre={25} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>
                     <div className='filtreLabel'>Date</div>
                     <div className='filtreRow'>
-                        <input type='date' id='datedeb' defaultValue={result} />
+                        <input type='date' id='datedeb' defaultValue={dates}  />
                         <span>-</span>
-                        <input type='date' id='datefin' />
+                        <input type='date' id='datefin' defaultValue={result} />
                     </div>
                     <div className='filtreLabel'>Montant</div>
                     <div className='filtreRow'>
-                        <input type='number' step='50' min='50' id='montant1'/>
+                        <input type='number' step='50' min='50' id='montant1' defaultValue="0"/>
                         <span>-</span>
-                        <input type='number' step='50' min='50' id='montant2'/>
+                        <input type='number' step='50' min='50' id='montant2'  defaultValue="100000000000" />
                     </div>
                     <div className='filtreLabel'>Moyen de Paiement</div>
                     <div className='filtreRow'>
@@ -117,7 +140,7 @@ export default function DashRecharg(){
             </div>
             <div id='listeBox'>
                 
-                {client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}
+                {(client.length == 0)? <div></div> : client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}
             </div>
             </div>
         </div>

@@ -24,9 +24,10 @@ export default function ProprioItem({ idproprio, dateProprio, nomComplet, telPro
                 // always executed
             })  
     }
-    function handledelete (){
+    function handledelete2 (){
         deleteProprio(idproprio)
         alert('Proprietaire à bien été suprimé')
+        window.location.reload();
 
 
         console.log("ok")
@@ -46,7 +47,7 @@ export default function ProprioItem({ idproprio, dateProprio, nomComplet, telPro
             </div>
             <div className='mod'>
             <div className='modSuppr'>
-                    <img src={Delete} height="17px" onClick={handledelete}  className='dlt'   />
+                    <img src={Delete} height="17px" onClick={handledelete2}  className='dlt'   />
                     <img src={update} height="17px" className='upadt' onClick={handleupdate1} />
             </div>
             </div>

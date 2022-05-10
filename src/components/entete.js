@@ -3,8 +3,7 @@ import '../styles/style_entete.css';
 import { useNavigate } from "react-router-dom";
 export default function Entete({nomComplet, lienProfil , name, showAjouter}){
   
-   const navigate = useNavigate()
-
+   const navigate = useNavigate();
    function choose (){
     switch (name) {
         case 'conducteur':
@@ -20,7 +19,11 @@ export default function Entete({nomComplet, lienProfil , name, showAjouter}){
 }
     return (
         <header id="entete">
-            <div id="logo">Logo</div>
+            <div id="logo" onClick={()=>navigate('/Menu')}>
+                <span className='m'>M</span>y
+                <span className='tir'>-</span>
+                <span className='tic'>tic</span>
+            </div>
             <div id="enteteDroite">
                 {
                     showAjouter==false?

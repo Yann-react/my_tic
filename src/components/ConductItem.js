@@ -29,9 +29,10 @@ export default function ConductItem({idConduct, nomComplet, telConduct, adresseC
             })  
     }
   
-    function handledelete (){
+    function handledelete1 (){
         deleteConduct(idConduct)
         alert('Conducteur à bien été supprimé')
+        window.location.reload();
         
     }
      
@@ -61,11 +62,11 @@ export default function ConductItem({idConduct, nomComplet, telConduct, adresseC
             <div className='mod2'>
             <div className='modSuppr'>
     
-    <img src={Delete} height="17px" onClick={handledelete}   />
+            <img src={Delete} height="17px" className='dsgn1' onClick={handledelete1}   />
 
 
-    <img src={update} height="17px" className='upadt' onClick={handleupdate} />
-    
+            <img src={update} height="17px" className='upadt dsgn' onClick={handleupdate} />
+            
 
 </div>
             </div>
