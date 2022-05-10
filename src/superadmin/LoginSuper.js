@@ -1,22 +1,19 @@
-import React , {Component , useEffect , useState }from 'react'
+import React , {Component }from 'react'
 import '../styles/Login.css'
 import { useNavigate } from "react-router-dom";
-import Entete from "./Entete";
+import Entete from "./../components/Entete";
 import axios from 'axios';
 import md5 from 'md5';
-export default function Login() {
+export default function LoginSuper() {
     const navigate = useNavigate()
 
-    function versSuper(){
-        navigate('/LoginSuper');
+    function versAdmin(){
+        navigate('/');
     }
-
-    function handleSbmit(){
-        const matricul = document.getElementById('matricul').value
    function handleSbmit(){
     const matricul = document.getElementById('matricul').value
     const password = md5(document.getElementById('password').value)
-       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+       const url =  encodeURI("http://tryconnectadmin/tryConnectSuperAdmin.php?matricule="+matricul+"&mdp="+password)
     
      axios.get(url)
          .then(function (response) {
@@ -26,10 +23,10 @@ export default function Login() {
                  sessionStorage.setItem("matricule", response.data.resultat.matricule);
                  sessionStorage.setItem("mdp", response.data.resultat.mdp);
                  sessionStorage.setItem("nomComplet", response.data.resultat.nomComplet);
-                 navigate('/Menu');
+                 navigate('/DashSuper');
              }else{
                  document.querySelector('.disactive').setAttribute('class',' .disactive active')
-                }
+             }
             //  response.data.succes? navigate('/Menu'):
          })
          .catch(function (error) {
@@ -38,59 +35,25 @@ export default function Login() {
          })
          .then(function () {
              // always executed
-            })  
-        }     
-}
-
-function verifierConnexion(){
-    if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
-        const matricul = window.sessionStorage.getItem("matricule")
-        const password = window.sessionStorage.getItem("mdp")
-       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
-    
-     axios.get(url)
-         .then(function (response) {
-             console.log(response.data);
-             if(response.data.succes){
-                 //Ok il est connecté, il peut rester
-             }else{
-                 //Il degage
-                navigate('/');
-             }
-         })
-         .catch(function (error) {
-             console.log(error);
-         })
-         .then(function () {
          })  
-    }else{
-        //Deco
-        navigate('/');
-    }
-}
-
-useEffect(()=>{
-    verifierConnexion()
-  },[])
-
-
+   }
     return (
-        <>
+    <>
               
-                <Entete lienProfil="#" />
+                <Entete lienProfil="#" showAjouter={false} />
 
     <div className="box-lo">
 
     <div className="box-login">
-    <h1>CONNEXION</h1>
+    <h1>SUPER ADMIN</h1>
     <div className='formLogin'>
         <label htmlFor="id" >ID</label>
-        <input type="text" name='id' id='matricul'/>
+        <input type="text" name='id' id='matricul' />
         <label htmlFor="motspass">MOT DE PASSE</label>
         <input type="password" name='motspass' id='password' />
         <p className="disactive">Identifiants erronés</p>
         <button className='but-login' onClick={handleSbmit}>VALIDER</button>
-        <div className='supAdmin' onClick={versSuper}>Super Admin</div>
+        <div className='supAdmin' onClick={versAdmin}>Admin</div>
     </div>
     
     </div>
@@ -98,3 +61,4 @@ useEffect(()=>{
     </>
   )
 }
+

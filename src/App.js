@@ -14,6 +14,12 @@ import DashProprio from './proprietaire/DashProprio'
 import DashConduct from './conducteur/DashConduct'
 import UpdatProprio from './components/UpdatProprio'
 import UpdatRecharge from './components/UpdatRecharge'
+import LoginSuper from './superadmin/LoginSuper'
+import ViewProfilSuper from './superadmin/ViewProfileSuper'
+import AddddAdmin from './superadmin/addAdmin'
+import SetPasswordSuper from './superadmin/SetPasswordSuper'
+import ConfirmDeleteAdmin from './superadmin/ConfirmDeleteAdmin'
+import DashSuper from './superadmin/DashSuper'
 export default function App() {
   return (
     <div>
@@ -45,6 +51,12 @@ export default function App() {
       <Route path='/UpdatConductor/:nom/:prenom/:commune/:quartier/:telConduct/:id/condu' element={<DashConduct /> } />
       <Route path='/UpdatProprio/:nom/:prenom/:commune/:quartier/:telProprio/:nbVehicules/:id/proprio' element={<DashProprio /> } />
       <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id/Rechar' element={<DashRecharg /> } />
+      <Route path='LoginSuper' element={<LoginSuper />} />
+     <Route path='DashSuper' element={<DashSuper />} />
+     <Route path='ViewProfileSuper' element={<ViewProfilSuper />} />
+     <Route path='AddAdmin' element={<AddddAdmin />} />
+     <Route path='SetPasswordSuper' element={<SetPasswordSuper />} />
+     <Route path='ConfirmDeleteAdmin' element={<ConfirmDeleteAdmin />} />
 
     
 

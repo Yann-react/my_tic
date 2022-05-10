@@ -1,0 +1,46 @@
+#recharg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+}
+
+#recharg div{
+    font-weight: 500;
+    color: black;
+}
+
+#recharg :nth-child(0n+2){
+    width: 50%;
+    color: #4d89e4;
+}
+
+#recharg :nth-child(0n+1){
+    width: 50%;
+}
+
+.suppr svg{
+    height: 30px;
+    width: 30px;
+    fill: #612002;
+}
+
+.suppr{
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    display: none;
+}
+
+.item:hover .suppr{
+    display: block;
+}
+
+.suppr:hover{
+    cursor: pointer;
+}
