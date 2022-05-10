@@ -1,5 +1,8 @@
 <?php
+    
     include 'bdd.php';
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
 
     try {
         $bdd = getBDD();
@@ -7,7 +10,6 @@
         $rech->execute(Array($_GET["matricule"], $_GET["mdp"]));
 
         if($donnees = $rech->fetch()){
-            $user = [;]
             $user["matricule"] = $donnees["matricule"];
             $user["nomComplet"] = $donnees["nomComplet"];
             $user["mdp"] = $donnees["motpass"];
