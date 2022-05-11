@@ -1,23 +1,50 @@
 import React, { useEffect,useState } from 'react';
 import '../styles/styleDashRecharg.css';
-import Entete from "../components/Entete";
 import TitleBar from '../components/TitleBar';
 import RechargItem from '../components/RechargItem';
 import axios from 'axios';
-export default function DashRecharg(){
+import { useNavigate } from "react-router-dom";
+
+export default function RecharSup(){
     
-   
+    const navigate = useNavigate()
+
     const [client, setClient] = useState([])
     const [dates, setDates] = useState([])
 
-    function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, idAdmin, nomComplet, moyenPay){
-        let req = 'http://tryconnectadmin/getRechargFromFiltresByAdmin.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax+'&idAdmin='+sessionStorage.getItem("matricule");
+    function verifierConnexion(){
+        if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
+            const matricul = window.sessionStorage.getItem("matricule")
+            const password = window.sessionStorage.getItem("mdp")
+            const url =  encodeURI("http://tryconnectadmin/tryConnectSuperAdmin.php?matricule="+matricul+"&mdp="+password)
+            
+            axios.get(url)
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data.succes){
+                    //Ok il est connecté, il peut rester
+                }else{
+                    //Il degage
+                    navigate('/LoginSuper');
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {
+            })  
+        }else{
+            //Deco
+            navigate('/LoginSuper');
+        }
+    }
+    
+    function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, nomComplet, moyenPay){
+        let req = 'http://tryconnectadmin/getRechargFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax;
         if(telephone != ''){
             req = req + '&telephone='+telephone;
         }
-        if(idAdmin != ''){
-            req = req + '&idAdmin='+idAdmin;
-        }
+ 
         if(nomComplet != ''){
             req = req + '&nomComplet='+nomComplet;
         }
@@ -51,10 +78,13 @@ export default function DashRecharg(){
         const datefin = document.getElementById('datefin').value
         const pay = document.getElementById('pay').value
         const phone = document.getElementById('phone').value
-        const idadmin = document.getElementById('idadmin').value
 
-        getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, idadmin, nom, pay);
+        getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, nom, pay);
     }
+    function versProfil(){
+        navigate('/ViewProfileSuper')
+      }
+    
    function  DateFin(separator=''){
         let newDate = new Date()
         let date = newDate.getDate();
@@ -85,12 +115,25 @@ export default function DashRecharg(){
             });
         }
         useEffect(()=>{
-            DateDeb()
+            verifierConnexion();
+            DateDeb();
         },[])
 
              return (
         <div>
-                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} name="rechargement" lienProfil="#"  />
+            <header id="entete">
+        <div id="logo" onClick={()=>navigate('/MenuSup')}>
+                <span className='m'>M</span>y
+                <span className='tir'>-</span>
+                <span className='tic'>tic</span>
+            </div>           
+             <div id="enteteDroite">
+                <a id="userIcon" href='#'>
+                    <svg xmlns="http://www.w3.org/2000/svg" onClick={versProfil} viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>
+                </a>
+                <div id='userName'>{window.sessionStorage.getItem("nomComplet")}</div>
+            </div>
+            </header>
             <TitleBar titre='RECHARGEMENTS' nombre={client.length} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>
@@ -123,6 +166,10 @@ export default function DashRecharg(){
                     <div className='filtreRow'>
                         <input type='text' id='nomCom'/>
                     </div>
+                    <div className='filtreLabel'>ID Administrateur</div>
+                    <div className='filtreRow'>
+                        <input type='text' id='idadmin'/>
+                    </div>
                     <div id='validFiltresRow'>
                         <div id='validFiltres' onClick={validFiltres}>VALIDER</div>
                     </div>
@@ -135,7 +182,6 @@ export default function DashRecharg(){
                 <div>Montant</div>
             </div>
             <div id='listeBox'>
-                
                 {(client.length == 0)? <div></div> : client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}
             </div>
             </div>

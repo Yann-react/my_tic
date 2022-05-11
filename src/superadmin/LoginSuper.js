@@ -23,7 +23,7 @@ export default function LoginSuper() {
                  sessionStorage.setItem("matricule", response.data.resultat.matricule);
                  sessionStorage.setItem("mdp", response.data.resultat.mdp);
                  sessionStorage.setItem("nomComplet", response.data.resultat.nomComplet);
-                 navigate('/DashSuper');
+                 navigate('/MenuSup');
              }else{
                  document.querySelector('.disactive').setAttribute('class',' .disactive active')
              }
@@ -40,7 +40,7 @@ export default function LoginSuper() {
     return (
     <>
               
-                <Entete lienProfil="#" showAjouter={false} />
+                <Entete lienProfil="#" showAjouter={false} showProfil={false} />
 
     <div className="box-lo">
 

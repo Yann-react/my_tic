@@ -1,85 +1,47 @@
-#recharg{
+#box-R{
+    border-bottom: solid 1px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1px;
-    margin-left: 10px;
-    margin-right: 10px;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: solid 1px;
-    position: relative;
 }
-
-#recharg div{
+#box-R div{
     width: 20%;
     font-weight: 500;
     color: black;
 }
-
-#recharg :nth-child(0n+2){
+#box-R :nth-child(0n+2){
     width: 35%;
     color: #4d89e4;
-  position: absolute;
-    left:  390px;
-}
-#box-R :nth-child(0n+3){
-    width: 10%;
-   
-    position: absolute;
-    right:  530px;
-}
-/* #box-R :nth-child(0n+1){
-} */
+    margin-right: xx0px;
 
-#recharg :nth-child(0n+1){
+}
+#box-R :nth-child(0n+1){
     width: 30%;
+    margin-right: 40px;
 }
-
-#recharg :nth-child(0n+4){
+#box-R   :nth-child(0n+4){
     width: 15%;
     color: #0FA958;
-    position: absolute;
-    right:  290px;
+    margin-right: 80px;
 }
 #box-R   :nth-child(0n+5){
-    width: 9%;
-    position: absolute;
-    right:  70px;
-}
-
-.mods{
-    position: relative;
-    top: -22px;
-    left: 520px;
-    
+    width: 15%;
 }
 
 .modSuppr{
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    height: 40px;
-    display: flex;
-    justify-content: end;
-    display: block;
-    background-color: #012840;
-}
+   display: flex;
+   width: 50px;
+   justify-content: space-between;
+   border: none;
 
-.modSuppr svg{
-    height: 40px;
-    width: 40px;
-    fill: #012840;
 }
-
-.suppr svg{
-    fill: #8a1a12;
-}
-.up{
+.mod{
     position: relative;
-    left: 15px;
+    top: -21px;
+    left: 600px;
+}
+
+.mod img:hover{
+    transition: 0.3s;
+    cursor: pointer;
+    opacity: 0.6;
 }

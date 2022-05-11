@@ -42,7 +42,7 @@ function handleSbmit1(){
       const commun = document.getElementById('commun').value
       const telephone = document.getElementById('telephone').value
       const quartier = document.getElementById('quartier').value
-      const idAdmin = sessionStorage.getItem("idAdmin");
+      const idAdmin = sessionStorage.getItem("matricule");
 
       const url =  encodeURI("http://tryconnectadmin/addConduct.php?nom="+nom+"&prenom="+prenom+"&commune="+commun+"&quartier="+quartier+"&telephone="+telephone+"&idAdmin="+idAdmin)
       

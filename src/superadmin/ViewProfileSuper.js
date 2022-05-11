@@ -5,6 +5,7 @@ import '../styles/ViewProfil.css'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useEffect,useState } from 'react';
+import Entete from '../components/Entete';
 
 
 export default function ViewProfilSuper() {
@@ -18,7 +19,7 @@ export default function ViewProfilSuper() {
     if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
         const matricul = window.sessionStorage.getItem("matricule")
         const password = window.sessionStorage.getItem("mdp")
-       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+       const url =  encodeURI("http://tryconnectadmin/tryConnectSuperAdmin.php?matricule="+matricul+"&mdp="+password)
     
      axios.get(url)
          .then(function (response) {
@@ -44,12 +45,21 @@ export default function ViewProfilSuper() {
   function versModifPass(){
     navigate('/SetPasswordSuper');
   }
+
   useEffect(() => {
     verifierConnexion();
  }, []);
   return (
     <>
-        <div className='viewProfil'>
+ <header id="entete">
+            <div id="logo" onClick={()=>navigate('/MenuSup')}>
+                <span className='m'>M</span>y
+                <span className='tir'>-</span>
+                <span className='tic'>tic</span>
+            </div> 
+            
+            </header>      
+              <div className='viewProfil'>
           <div className="profil">
         <img src={profils} height="70"/>
           </div>

@@ -79,7 +79,7 @@ export default function DashConduct(){
                 return (
                     <div>
                     <Entete nomComplet={sessionStorage.getItem('nomComplet')} name='conducteur' lienProfil="#" />
-            <TitleBar titre='CONDUCTEURS' nombre={25} onFiltreClick={cacherOuMontrerFiltres}/>
+            <TitleBar titre='CONDUCTEURS' nombre={condu.length} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>
                 <div className='filtreLabel'>Date</div>

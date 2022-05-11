@@ -88,7 +88,7 @@ export default function DashProprio(){
     return (
         <div>
                     <Entete nomComplet={sessionStorage.getItem('nomComplet')} name="proprietaire" lienProfil="#"  />
-            <TitleBar titre='PROPRIETAIRES' nombre={25} onFiltreClick={cacherOuMontrerFiltres}/>
+            <TitleBar titre='PROPRIETAIRES' nombre={proprio.length} onFiltreClick={cacherOuMontrerFiltres}/>
             <div id='corps'>
                 <div className='fitreForm filtreFormHidden' id='filtreForm'>
                 <div className='filtreRow'>

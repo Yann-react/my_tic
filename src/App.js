@@ -20,10 +20,11 @@ import AddddAdmin from './superadmin/addAdmin'
 import SetPasswordSuper from './superadmin/SetPasswordSuper'
 import ConfirmDeleteAdmin from './superadmin/ConfirmDeleteAdmin'
 import DashSuper from './superadmin/DashSuper'
+import MenuSup from './superadmin/MenuSup'
+import RecharSup from './superadmin/RecharSup'
 export default function App() {
   return (
     <div>
-            {/* <Login /> */}
 
       <Routes>
       {/* Route simpl */}
@@ -41,7 +42,7 @@ export default function App() {
 
       <Route path='/UpdatConductor/:nom/:prenom/:commune/:quartier/:telConduct/:id' element={<UpdatConductor />} />
       <Route path='/UpdatProprio/:nom/:prenom/:commune/:quartier/:telProprio/:nbVehicules/:id' element={<UpdatProprio />} />
-      <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id' element={<UpdatRecharge />} />
+      <Route path='/UpdatRecharge/:nomComplet/:montant/:moyenPay/:telephone/:id' element={<UpdatRecharge />} /> 
      
      {/* Route pour fait ds rtour */}
 
@@ -57,12 +58,15 @@ export default function App() {
      <Route path='AddAdmin' element={<AddddAdmin />} />
      <Route path='SetPasswordSuper' element={<SetPasswordSuper />} />
      <Route path='ConfirmDeleteAdmin' element={<ConfirmDeleteAdmin />} />
+     <Route path='/MenuSup' element={ <MenuSup /> } />
+     <Route path='/RecharSup' element={  <RecharSup />} />
+      
+    
 
     
 
       </Routes>
     
-     {/* <UpdatRecharge /> */}
      
     </div>
   )

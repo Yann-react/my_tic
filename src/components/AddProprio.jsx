@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect } from 'react'
 import arrowLeft from '../assets/arrow-left.svg'
 import '../styles/Proprio.css'
 import Entete from "./Entete";
@@ -13,7 +13,8 @@ export default function AddProprio() {
     if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
         const matricul = window.sessionStorage.getItem("matricule")
         const password = window.sessionStorage.getItem("mdp")
-       const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
+     
+        const url =  encodeURI("http://tryconnectadmin/tryConnectAdmin.php?matricule="+matricul+"&mdp="+password)
     
      axios.get(url)
          .then(function (response) {
@@ -44,7 +45,7 @@ function handleSbmit2(){
   const commun= document.getElementById('commun').value
     const telephone = document.getElementById('telephone').value
     const nombreCondu = document.getElementById('nombreCondu').value
-    const idAdmin = sessionStorage.getItem("idAdmin");
+    const idAdmin = sessionStorage.getItem("matricule");
 
     const url =  encodeURI("http://tryconnectadmin/addProprio.php?nom="+nom+"&prenom="+prenom+"&communeCondu="+commun+"&quartierCondu="+quartier+"&telephone="+telephone+"&nombreCondu="+nombreCondu+"&idAdmin="+idAdmin)
 
@@ -62,7 +63,7 @@ function handleSbmit2(){
        .then(function () {
          // always executed
         });
-      }
+    }
       useEffect(()=>{
         verifierConnexion()
       },[])

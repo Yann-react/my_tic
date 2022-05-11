@@ -74,7 +74,7 @@ useEffect(()=>{
     return (
         <>
               
-                <Entete lienProfil="#" />
+                <Entete lienProfil="#" showAjouter={false} showProfil={false} />
 
     <div className="box-lo">
 

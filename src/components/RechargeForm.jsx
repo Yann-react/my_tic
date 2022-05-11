@@ -67,7 +67,7 @@ function handleSbmit3(){
       },[])
       return (
         <>
-                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />
+                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#"  showAjouter={false} />
 
     <div className='recha'>
     <div className='box-recha'>
@@ -84,10 +84,9 @@ function handleSbmit3(){
         </div>
         <div className="payement">
         <label htmlFor="montant">Montant</label>
-        <input type="text" name='montant'id='montant'/>
+        <input type="number" name='montant'id='montant' min="5000" step="50" />
         <label htmlFor="moyenPayement">Moyen Payement</label>
         <select name="moyenPayement" id='moyPay'>
-            <option value="">PEUT IMPORTE</option>
             <option value="1">WAVE</option>
             <option value="2">ORANGE MONEY</option>
             <option value="3">ESPECE</option>
