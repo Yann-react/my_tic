@@ -87,27 +87,27 @@ export default function DashRecharg(){
               // always executed
             });
         }
-        function Somme(){
-            const datedeb = document.getElementById('datedeb').value
-            const datefin = document.getElementById('datefin').value
-            axios.get('http://tryconnectadmin/getTotal.php?dateFin='+datefin+'&dateDeb='+datedeb)
-            .then(function (response) {
-              // handle success
-            // console.log(setTotal(response.data.resultat) )
-             setTotal(response.data.resultat)
-            })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
-            })
-            .then(function () {
-              // always executed
-            });  
-        }
+        // function Somme(){
+        //     const datedeb = document.getElementById('datedeb').value
+        //     const datefin = document.getElementById('datefin').value
+        //     axios.get('http://tryconnectadmin/getTotal.php?dateFin='+datefin+'&dateDeb='+datedeb)
+        //     .then(function (response) {
+        //       // handle success
+        //     // console.log(setTotal(response.data.resultat) )
+        //      setTotal(response.data.resultat)
+        //     })
+        //     .catch(function (error) {
+        //       // handle error
+        //       console.log(error);
+        //     })
+        //     .then(function () {
+        //       // always executed
+        //     });  
+        // }
        
         useEffect(()=>{
             DateDeb()
-            Somme()
+            // Somme()
         },[])
 
              return (
