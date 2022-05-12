@@ -2,7 +2,7 @@
     include 'bdd.php';
     $bdd = getBDD();
 
-    $reqStr = "SELECT * FROM rechargement ";
+    $reqStr = "SELECT id, nomComplet, date, montant, idAdmin, telephone, SUM(montant) FROM rechargement ";
     $reqConds = "WHERE ";
     $reqConds = $reqConds . "((date  > '".$_GET["dateDeb"]."' AND date  < '".$_GET["dateFin"]."') OR ((date='".$_GET["dateDeb"]."') OR (date='".$_GET["dateFin"]."'))) AND montant >= '".$_GET["montantMin"]."' AND montant <= '".$_GET["montantMax"]."' ";
     if(isset($_GET["telephone"])){
@@ -35,6 +35,7 @@
         $recharg["montant"] = $itemRecharg["montant"];
         $recharg["idAdmin"] = $itemRecharg["idAdmin"];
         $recharg["telephone"] = $itemRecharg["telephone"];
+        $recharg["total"] = $itemRecharg["SUM(montant)"];
         $rechMoy = $bdd->prepare("SELECT nom FROM moyenpayement WHERE id='".$itemRecharg["moyenPay"]."'");
         $rechMoy->execute();
         if($donneesMoy = $rechMoy->fetch()){
