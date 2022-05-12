@@ -11,7 +11,9 @@ export default function RecharSup(){
 
     const [client, setClient] = useState([])
     const [dates, setDates] = useState([])
-
+    const [total, setTotal] = useState([])
+  
+   
     function verifierConnexion(){
         if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
             const matricul = window.sessionStorage.getItem("matricule")
@@ -114,9 +116,25 @@ export default function RecharSup(){
               // always executed
             });
         }
+        function Somme(){
+            axios.get('http://tryconnectadmin/getTotal.php')
+            .then(function (response) {
+              // handle success
+            console.log(setTotal(response.data.resultat) )
+             
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });  
+        }
         useEffect(()=>{
             verifierConnexion();
             DateDeb();
+            Somme()
         },[])
 
              return (
@@ -181,6 +199,7 @@ export default function RecharSup(){
                 <div>Moyen de Paiement</div>
                 <div>Montant</div>
             </div>
+                <div className='Total'>Total <span className='tot'> {total}</span> </div>
             <div id='listeBox'>
                 {(client.length == 0)? <div></div> : client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}
             </div>

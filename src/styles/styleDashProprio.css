@@ -87,7 +87,14 @@
 }
 
 #listeSommaire :nth-child(0n+2){
-    width: 35%;
+    width: 25%;
+    margin-right: 100px;
+
+}
+#listeSommaire :nth-child(0n+3){
+    width: 15%;
+    margin-right: 180px;
+
 }
 
 #listeSommaire :nth-child(0n+1){
@@ -96,4 +103,5 @@
 
 #listeSommaire :nth-child(0n+4){
     width: 15%;
+    margin-right: 100px;
 }

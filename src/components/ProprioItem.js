@@ -38,7 +38,7 @@ export default function ProprioItem({ idproprio, dateProprio, nomComplet, telPro
     return (
         <div>
 
-        <div id="box-r">
+        <div id="box-s">
             <div> {dateProprio} </div>
             <div> {nomComplet} </div>
             <div> {telProprio} </div>

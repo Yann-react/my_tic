@@ -10,7 +10,7 @@ export default function DashConduct(){
     const [dates, setDates] = useState([])
 
     function getConductFromFiltres(dateDeb, dateFin, commune, quartier){
-        let req = 'http://tryconnectadmin/getConductFromFiltresByAdmin.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&idAdmin='+sessionStorage.getItem("matricule");
+        let req = 'http://tryconnectadmin/getConductFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin;
         if(commune != ''){
             req = req + '&commune='+commune;
         }
@@ -100,7 +100,7 @@ export default function DashConduct(){
                         <div id='validFiltres' onClick={validFiltres3}>VALIDER</div>
                     </div>
                     </div>
-            <div id='listeSommaire'>
+            <div id='listeSommairer'>
                 <div>Date</div>
                 <div>Conducteur</div>
                 <div>Téléphone</div>

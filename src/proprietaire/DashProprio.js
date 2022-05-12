@@ -10,7 +10,7 @@ export default function DashProprio(){
     const [dates, setDates] = useState([])
 
     function getProprioFromFiltres(dateDeb, dateFin, nombreConductMin, nombreConductMax, commune, quartier){
-        let req ='http://tryconnectadmin/getProprioFromFiltresByAdmin.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&nombreConductMin='+nombreConductMin+'&nombreConductMax='+nombreConductMax+'&idAdmin='+sessionStorage.getItem("matricule");
+        let req ='http://tryconnectadmin/getProprioFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&nombreConductMin='+nombreConductMin+'&nombreConductMax='+nombreConductMax;
         if(commune != ''){
             req = req + '&commune='+commune;
         }

@@ -62,8 +62,8 @@ export default function MenuSup() {
             </header>
   
           <div className='box-menu'>
-              <div className='box-condu' onClick={()=> navigate('/DashSuper') }><img src={employee}  className='img1'  height="170px"  /><h2 id='titl-box-mnu'>EMPLOYER</h2></div>
-              <div className='box-rechar' onClick={()=> navigate('/RecharSup') } ><img src={rechar}   className='img1' height="170px" /><h2 id='titl-box-mnu'>RECHARGEMENT</h2></div>
+              <div className='box-condu' onClick={()=> navigate('/DashSuper') }><img src={employee}  className='img1'  height="170px"  /><h2 id='titl-box-mnu'>EMPLOYES</h2></div>
+              <div className='box-rechar' onClick={()=> navigate('/RecharSup') } ><img src={rechar}   className='img1' height="170px" /><h2 id='titl-box-mnu'>RECHARGEMENTS</h2></div>
           </div>
       </>
   )

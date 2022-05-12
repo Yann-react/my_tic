@@ -4,20 +4,24 @@ import Entete from "../components/Entete";
 import TitleBar from '../components/TitleBar';
 import RechargItem from '../components/RechargItem';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 export default function DashRecharg(){
-    
+ 
+    const navigate = useNavigate()
+
    
     const [client, setClient] = useState([])
     const [dates, setDates] = useState([])
+    const [total, setTotal] = useState([])
 
-    function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, idAdmin, nomComplet, moyenPay){
+   
+    function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, nomComplet, moyenPay){
         let req = 'http://tryconnectadmin/getRechargFromFiltresByAdmin.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax+'&idAdmin='+sessionStorage.getItem("matricule");
         if(telephone != ''){
             req = req + '&telephone='+telephone;
         }
-        if(idAdmin != ''){
-            req = req + '&idAdmin='+idAdmin;
-        }
+    
         if(nomComplet != ''){
             req = req + '&nomComplet='+nomComplet;
         }
@@ -51,9 +55,8 @@ export default function DashRecharg(){
         const datefin = document.getElementById('datefin').value
         const pay = document.getElementById('pay').value
         const phone = document.getElementById('phone').value
-        const idadmin = document.getElementById('idadmin').value
 
-        getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, idadmin, nom, pay);
+        getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, nom, pay);
     }
    function  DateFin(separator=''){
         let newDate = new Date()
@@ -84,8 +87,27 @@ export default function DashRecharg(){
               // always executed
             });
         }
+        function Somme(){
+            const datedeb = document.getElementById('datedeb').value
+            const datefin = document.getElementById('datefin').value
+            axios.get('http://tryconnectadmin/getTotal.php?dateFin='+datefin+'&dateDeb='+datedeb)
+            .then(function (response) {
+              // handle success
+            // console.log(setTotal(response.data.resultat) )
+             setTotal(response.data.resultat)
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });  
+        }
+       
         useEffect(()=>{
             DateDeb()
+            Somme()
         },[])
 
              return (
@@ -134,6 +156,8 @@ export default function DashRecharg(){
                 <div>Moyen de Paiement</div>
                 <div>Montant</div>
             </div>
+            <div className='Total'>Total <span className='tot'> {total}</span> </div>
+
             <div id='listeBox'>
                 
                 {(client.length == 0)? <div></div> : client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}

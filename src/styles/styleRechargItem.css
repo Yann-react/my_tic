@@ -1,7 +1,6 @@
 #box-R{
     border-bottom: solid 1px;
     display: flex;
-    justify-content: space-between;
 }
 #box-R div{
     width: 20%;
@@ -9,22 +8,33 @@
     color: black;
 }
 #box-R :nth-child(0n+2){
-    width: 35%;
+    width: 14%;
     color: #4d89e4;
-    margin-right: xx0px;
+    margin-left: 110px;
+
 
 }
 #box-R :nth-child(0n+1){
-    width: 30%;
+    width: 15%;
     margin-right: 40px;
+
+}
+#box-R :nth-child(0n+3){
+    width: 9%;
+    margin-left: 160px;
+
+
 }
 #box-R   :nth-child(0n+4){
-    width: 15%;
+    width: 10%;
     color: #0FA958;
-    margin-right: 80px;
+    margin-left:  130px;
+
 }
 #box-R   :nth-child(0n+5){
-    width: 15%;
+    width: 10%;
+    margin-left: 90px;
+
 }
 
 .modSuppr{

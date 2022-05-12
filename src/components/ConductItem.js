@@ -4,8 +4,6 @@ import Delete from '../assets/delete.svg'
 import update from '../assets/update.svg'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import Entete from './Entete';
-import DashConduct from '../conducteur/DashConduct';
 export default function ConductItem({idConduct, nomComplet, telConduct, adresseConduct, dateConduct , nom , prenom, commune , quartier}){
   
   
@@ -52,10 +50,10 @@ export default function ConductItem({idConduct, nomComplet, telConduct, adresseC
     return (
    <div>
 
-        <div id="box-r">
+        <div id="box-p">
 
             <div> {dateConduct} </div>
-            <div> {nomComplet} </div>
+            <div className='nms'> {nomComplet} </div>
             <div> {telConduct} </div>
             <div> {adresseConduct} </div>
             </div>

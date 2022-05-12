@@ -38,7 +38,8 @@ export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, 
     function handleupdate2(){
         navigate(`/UpdatRecharge/${conducteur}/${montant}/${moyen}/${telephone}/${idRecharg}`);
         }
-
+       
+// 
     return (
         <div>
 
