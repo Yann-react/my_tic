@@ -42,7 +42,7 @@ export default function RecharSup(){
     }
     
     function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, nomComplet, moyenPay){
-        let req = 'http://tryconnectadmin/getRechargFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax;
+        let req = 'http://tryconnectadmin/getRechargFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax+'&moyenPay='+moyenPay;
         if(telephone != ''){
             req = req + '&telephone='+telephone;
         }
@@ -116,25 +116,10 @@ export default function RecharSup(){
               // always executed
             });
         }
-        function Somme(){
-            axios.get('http://tryconnectadmin/getTotal.php')
-            .then(function (response) {
-              // handle success
-            console.log(setTotal(response.data.resultat) )
-             
-            })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
-            })
-            .then(function () {
-              // always executed
-            });  
-        }
+        
         useEffect(()=>{
             verifierConnexion();
             DateDeb();
-            Somme()
         },[])
 
              return (
@@ -199,7 +184,7 @@ export default function RecharSup(){
                 <div>Moyen de Paiement</div>
                 <div>Montant</div>
             </div>
-                <div className='Total'>Total <span className='tot'> {total}</span> </div>
+                <div className='Total'>Total <span className='tot'> </span> </div>
             <div id='listeBox'>
                 {(client.length == 0)? <div></div> : client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}
             </div>
