@@ -1,5 +1,9 @@
 <?php
     include 'bdd.php';
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
+
+    try {
     $bdd = getBDD();
 
     $reqStr = "SELECT * FROM proprietaire ";
@@ -15,6 +19,7 @@
         $reqConds = $reqConds."AND nombreCondu >= '".$_GET["nombreConductMin"]."' AND nombreCondu <= '".$_GET["nombreConductMax"]."' ";
     }
     $reqConds = $reqConds . " ORDER BY date DESC";
+    //echo($reqStr.$reqConds);
     //echo($reqStr.$reqConds);
     $rechProprio = $bdd->prepare($reqStr.$reqConds);
     $rechProprio->execute();
@@ -34,15 +39,27 @@
         $proprio["communeRech"] = $itemProprio["communeCondu"];
         $proprio["quartierRech"] = $itemProprio["quartierCondu"];
         $proprio["telephone"] = $itemProprio["telephone"];
+        
         $proprios[] = $proprio;
     }
+
     
     $result = [
         "succes"=>true,
         "resultat"=>$proprios
     ];
+    
 
 
 
     echo(json_encode($result, JSON_UNESCAPED_UNICODE));
+    
+      
+      } catch(PDOException $e) {
+        echo($e->getMessage());
+
+        $result = [
+            "succes"=>false,
+        ];
+      }
 ?>

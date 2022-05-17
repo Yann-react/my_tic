@@ -1,9 +1,10 @@
 <?php
     include 'bdd.php';
-
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("DELETE FROM conducteur WHERE id = ?");
+        $stmt = $bdd->prepare("DELETE FROM rechargement WHERE id = ?");
         $stmt->execute(array($_GET["id"]));
 
         $result = [
@@ -11,6 +12,7 @@
         ];
       
       } catch(PDOException $e) {
+        
         $result = [
             "succes"=>false,
         ];

@@ -14,44 +14,20 @@ export default function RecharSup(){
     const [total, setTotal] = useState([])
   
    
-    function verifierConnexion(){
-        if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
-            const matricul = window.sessionStorage.getItem("matricule")
-            const password = window.sessionStorage.getItem("mdp")
-            const url =  encodeURI("http://tryconnectadmin/tryConnectSuperAdmin.php?matricule="+matricul+"&mdp="+password)
-            
-            axios.get(url)
-            .then(function (response) {
-                console.log(response.data);
-                if(response.data.succes){
-                    //Ok il est connecté, il peut rester
-                }else{
-                    //Il degage
-                    navigate('/LoginSuper');
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .then(function () {
-            })  
-        }else{
-            //Deco
-            navigate('/LoginSuper');
-        }
-    }
     
-    function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, nomComplet, moyenPay){
-        let req = 'http://tryconnectadmin/getRechargFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax+'&moyenPay='+moyenPay;
+    function getRechargFromFiltres(dateDeb, dateFin, montantMin, montantMax, telephone, nomComplet, moyenPay, idAdmin){
+        let req = 'http://tryconnectadmin/getRechargFromFiltres.php?dateDeb='+dateDeb+'&dateFin='+dateFin+'&montantMin='+montantMin+'&montantMax='+montantMax;
         if(telephone != ''){
             req = req + '&telephone='+telephone;
         }
- 
         if(nomComplet != ''){
             req = req + '&nomComplet='+nomComplet;
         }
         if(moyenPay != ''){
             req = req + '&moyenPay='+moyenPay;
+        }
+        if(idAdmin != ''){
+            req = req + '&idAdmin='+idAdmin;
         }
     
         const  url = encodeURI(req);
@@ -61,6 +37,7 @@ export default function RecharSup(){
           // handle success
           console.log(response);
           console.log(setClient(response.data.resultat)) 
+          setTotal(response.data.total)
         })
         .catch(function (error) {
           // handle error
@@ -80,14 +57,14 @@ export default function RecharSup(){
         const datefin = document.getElementById('datefin').value
         const pay = document.getElementById('pay').value
         const phone = document.getElementById('phone').value
+        const idAdmin = document.getElementById('idadmin').value
 
-        getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, nom, pay);
+        getRechargFromFiltres(datedeb, datefin, montant1, montant2, phone, nom, pay, idAdmin);
     }
     function versProfil(){
         navigate('/ViewProfileSuper')
       }
-    
-   function  DateFin(separator=''){
+      function  DateFin(separator=''){
         let newDate = new Date()
         let date = newDate.getDate();
         let month = newDate.getMonth() + 1;
@@ -102,8 +79,9 @@ export default function RecharSup(){
         function DateDeb(){
             axios.get('http://tryconnectadmin/getFirstDateRecharg.php')
             .then(function (response) {
-              // handle success
+            //   handle success
               document.getElementById('datedeb').setAttribute('defaultValue', response.data.resultat);
+              console.log(response.data.resultat)
               setDates(response.data.resultat);
               validFiltres()
               console.log(dates);
@@ -116,9 +94,9 @@ export default function RecharSup(){
               // always executed
             });
         }
-        
+      
+       
         useEffect(()=>{
-            verifierConnexion();
             DateDeb();
         },[])
 
@@ -184,7 +162,7 @@ export default function RecharSup(){
                 <div>Moyen de Paiement</div>
                 <div>Montant</div>
             </div>
-                <div className='Total'>Total <span className='tot'> </span> </div>
+                <div className='Total'>Total <span className='tot'>{total} </span> </div>
             <div id='listeBox'>
                 {(client.length == 0)? <div></div> : client.map((item, i)=>(<RechargItem key={i} idRecharg={item.id} dateRecharg={item.date} conducteur={item.nomComplet} moyen={item.moyenPay} montant={item.montant} telephone={item.telephone}/>))}
             </div>

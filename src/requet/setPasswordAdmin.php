@@ -3,7 +3,7 @@
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("UPDATE admin SET motpass=:motpass WHERE matricule=:matricule");
+        $stmt = $bdd->prepare("UPDATE admin SET (motpass) VALUES (:motpass) WHERE matricule=:matricule");
         $stmt->bindParam(':matricule', $matricule);
         $stmt->bindParam(':motpass', $motpass);
     

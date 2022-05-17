@@ -4,13 +4,14 @@
     header('Access-Control-Allow-Headers: Content-Type');
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("UPDATE conducteur SET (nom=:nom, prenom=:prenom, nombreCondu=:nombreCondu, communeCondu=:communeCondu, quartierCondu=:quartierCondu, telephone=:telephone)");
+        $stmt = $bdd->prepare("INSERT INTO conducteur (date, nom, prenom, commune, quartier, telephone , idAdmin) VALUES (:date, :nom, :prenom, :commune, :quartier, :telephone ,:idAdmin)");
         $stmt->bindParam(':date', $date);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':commune', $commune);
         $stmt->bindParam(':quartier', $quartier);
         $stmt->bindParam(':telephone', $telephone);
+        $stmt->bindParam(':idAdmin', $idAdmin);
       
         $date = date('Y-m-d');
         $nom = $_GET["nom"];
@@ -18,6 +19,7 @@
         $commune = $_GET["commune"];
         $quartier = $_GET["quartier"];
         $telephone = $_GET["telephone"];
+        $idAdmin = $_GET["idAdmin"];
         $stmt->execute();
 
         $result = [
@@ -26,6 +28,7 @@
       
       } catch(PDOException $e) {
         echo($e->getMessage());
+
         $result = [
             "succes"=>false,
         ];

@@ -5,7 +5,9 @@
 
     try {
         $bdd = getBDD();
-        $rech = $bdd->prepare("SELECT SUM(montant) FROM rechargement");
+        $rech = $bdd->prepare("SELECT SUM(montant) date FROM rechargement");
+        $reqConds = "WHERE ";
+        $reqConds = $reqConds . "((date  > '".$_GET["dateDeb"]."' AND date  < '".$_GET["dateFin"]."') OR ((date='".$_GET["dateDeb"]."') OR (date='".$_GET["dateFin"]."')))";
         $rech->execute();
         while($donnees = $rech->fetch()){
             $result = [
@@ -15,6 +17,8 @@
         }
       
       } catch(PDOException $e) {
+        echo($e->getMessage());
+
         $result = [
             "succes"=>false,
         ];

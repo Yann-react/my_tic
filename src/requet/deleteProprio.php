@@ -2,11 +2,10 @@
     include 'bdd.php';
     header("Access-Control-Allow-Origin: *");
     header('Access-Control-Allow-Headers: Content-Type');
-
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("DELETE FROM admin WHERE matricule = ?");
-        $stmt->execute(array($_GET["matricule"]));
+        $stmt = $bdd->prepare("DELETE FROM proprietaire WHERE id = ?");
+        $stmt->execute(array($_GET["id"]));
 
         $result = [
             "succes"=>true,

@@ -1,6 +1,7 @@
 <?php
     include 'bdd.php';
-
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
     try {
         $bdd = getBDD();
         $stmt = $bdd->prepare("UPDATE conducteur SET nom=:nom, prenom=:prenom, commune=:commune, quartier=:quartier, telephone=:telephone WHERE id='".$_GET["id"]."'");
@@ -22,6 +23,7 @@
         ];
       
       } catch(PDOException $e) {
+        echo($e->getMessage());
         $result = [
             "succes"=>false,
         ];

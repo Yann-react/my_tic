@@ -3,8 +3,8 @@
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("DELETE FROM rechargement WHERE id = ?");
-        $stmt->execute(array($_GET["id"]));
+        $stmt = $bdd->prepare("DELETE FROM admin WHERE matricule = ?");
+        $stmt->execute(array($_GET["matricule"]));
 
         $result = [
             "succes"=>true,

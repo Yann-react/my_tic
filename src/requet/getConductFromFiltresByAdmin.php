@@ -1,10 +1,12 @@
 <?php
     include 'bdd.php';
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
     $bdd = getBDD();
 
     $reqStr = "SELECT * FROM conducteur ";
     $reqConds = "WHERE ";
-    $reqConds = $reqConds . "((date  > '".$_GET["dateDeb"]."' AND date  < '".$_GET["dateFin"]."') OR ((date='".$_GET["dateDeb"]."') OR (date='".$_GET["dateFin"]."'))) ";
+    $reqConds = $reqConds . "((date  > '".$_GET["dateDeb"]."' AND date  < '".$_GET["dateFin"]."') OR ((date='".$_GET["dateDeb"]."') OR (date='".$_GET["dateFin"]."'))) AND idAdmin='".$_GET["idAdmin"]."' ";
     if(isset($_GET["commune"])){
         $reqConds = $reqConds."AND commune = '".$_GET["commune"]."' ";
     }

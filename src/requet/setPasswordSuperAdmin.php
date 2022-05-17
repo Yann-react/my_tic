@@ -1,17 +1,13 @@
 <?php
     include 'bdd.php';
-    header("Access-Control-Allow-Origin: *");
-    header('Access-Control-Allow-Headers: Content-Type');
 
     try {
         $bdd = getBDD();
-        $stmt = $bdd->prepare("INSERT INTO admin (matricule, nomComplet, motpass) VALUES (:matricule, :nomComplet, :motpass)");
+        $stmt = $bdd->prepare("UPDATE admin SET (motpass) VALUES (:motpass) WHERE matricule=:matricule");
         $stmt->bindParam(':matricule', $matricule);
-        $stmt->bindParam(':nomComplet', $nomComplet);
         $stmt->bindParam(':motpass', $motpass);
-      
-        $nomComplet = $_GET["nomComplet"];
-        $motpass = "MOTDEPASSE";
+    
+        $motpass = $_GET["motpass"];
         $matricule = $_GET["matricule"];
         $stmt->execute();
 

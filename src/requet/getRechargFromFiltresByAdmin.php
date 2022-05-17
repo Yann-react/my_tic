@@ -1,10 +1,12 @@
 <?php
     include 'bdd.php';
+    header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: Content-Type');
     $bdd = getBDD();
 
     $reqStr = "SELECT * FROM rechargement ";
     $reqConds = "WHERE ";
-    $reqConds = $reqConds . "((date  > '".$_GET["dateDeb"]."' AND date  < '".$_GET["dateFin"]."') OR ((date='".$_GET["dateDeb"]."') OR (date='".$_GET["dateFin"]."'))) AND montant >= '".$_GET["montantMin"]."' AND montant <= '".$_GET["montantMax"]."' ";
+    $reqConds = $reqConds . "((date  > '".$_GET["dateDeb"]."' AND date  < '".$_GET["dateFin"]."') OR ((date='".$_GET["dateDeb"]."') OR (date='".$_GET["dateFin"]."'))) AND montant >= '".$_GET["montantMin"]."' AND montant <= '".$_GET["montantMax"]."' AND idAdmin='".$_GET["idAdmin"]."' ";
     if(isset($_GET["telephone"])){
         $reqConds = $reqConds."AND telephone = '".$_GET["telephone"]."' ";
     }
@@ -42,7 +44,7 @@
         }
         $rechargs[] = $recharg;
     }
-
+    
     $reqTotal = "SELECT SUM(montant) FROM rechargement ";
     $rechTotal = $bdd->prepare($reqTotal.$reqConds);
     $rechTotal->execute();
@@ -50,12 +52,13 @@
     if($donneesTotal = $rechTotal->fetch()){
         $total = $donneesTotal['SUM(montant)'];
     }
-    
     $result = [
         "succes"=>true,
         "resultat"=>$rechargs,
         "total"=>$total
     ];
+
+
 
     echo(json_encode($result, JSON_UNESCAPED_UNICODE));
 ?>
