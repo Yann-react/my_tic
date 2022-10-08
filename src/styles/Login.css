@@ -44,3 +44,7 @@ color: white;
 opacity: 1;}
 .disactive{
 opacity: 0;}
+
+.supAdmin , .but-login{
+    cursor: pointer;
+}

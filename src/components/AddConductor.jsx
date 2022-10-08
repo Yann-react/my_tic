@@ -5,8 +5,8 @@ import Entete from "./Entete";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 export default function AddConductor() {
+  
   const navigate = useNavigate()
-
 
   function verifierConnexion(){
     if((window.sessionStorage.getItem("matricule")!=null)&&(window.sessionStorage.getItem("mdp")!=null)){
@@ -62,15 +62,11 @@ function handleSbmit1(){
         .then(function () {
           // always executed
         });
-      }
-      
+      } 
       useEffect(()=>{
         verifierConnexion()
       },[])
-      
-      
-      
-      
+  
       return (
         <>
                     <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#" showAjouter={false} />

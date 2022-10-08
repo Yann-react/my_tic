@@ -54,6 +54,7 @@ function handleSbmit2(){
          // handle success
          if(response.data.succes){
           alert('Proprietaire à bien été ajouté')
+          navigate('proprio')
          }
         })
         .catch(function (error) {

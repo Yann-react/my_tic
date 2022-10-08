@@ -19,7 +19,7 @@ export default function DashConduct(){
         }
     
         let url = encodeURI(req);
-
+            
         axios.get(url)
         .then(function (response) {
           // handle success

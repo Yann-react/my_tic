@@ -67,7 +67,7 @@ function handleSbmit3(){
       },[])
       return (
         <>
-                    <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#"  showAjouter={false} />
+        <Entete nomComplet={sessionStorage.getItem('nomComplet')} lienProfil="#"  showAjouter={false} />
 
     <div className='recha'>
     <div className='box-recha'>

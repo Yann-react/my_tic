@@ -6,9 +6,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 export default function ConductItem({idConduct, nomComplet, telConduct, adresseConduct, dateConduct , nom , prenom, commune , quartier}){
   
-  
     const navigate = useNavigate()
-
     
     function deleteConduct(matricule){
         const url =  encodeURI("http://tryconnectadmin/deleteConduct.php?id="+matricule);

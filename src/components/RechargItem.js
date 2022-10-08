@@ -31,7 +31,7 @@ export default function RechargItem({ idRecharg,dateRecharg, conducteur, moyen, 
         }
     function handledelete (){
         deleteRecharg(idRecharg)
-        // alert('Rechargement à bien été supprimé')
+        alert('Rechargement à bien été supprimé')
         window.location.reload();
 
     }
